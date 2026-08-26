@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VAYU. Air forecasts with receipts.</title>
+<meta name="description" content="Nightly air quality forecasts for five Indian cities. Every prediction graded in public.">
+<style>
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('cards/assets/fonts/cormorant-garamond-latin-400-normal.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('cards/assets/fonts/cormorant-garamond-latin-400-italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('cards/assets/fonts/cormorant-garamond-latin-600-normal.woff2') format('woff2');
+    font-weight: 600; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Mono';
+    src: url('cards/assets/fonts/dm-mono-latin-400-normal.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  :root {
+    --ink: #0d0c0a; --paper: #f5f0e8; --gold: #c9a84c;
+    --rust: #b85c38; --teal: #3a7d74;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--ink); color: var(--paper);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-variant-numeric: lining-nums;
+    font-feature-settings: 'lnum' 1;
+    position: relative; min-height: 100vh;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06; pointer-events: none; z-index: 100;
+  }
+  .mono { font-family: 'DM Mono', monospace; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+  header { padding: 64px 0 28px; border-bottom: 1px solid rgba(201,168,76,0.5); }
+  .brand { font-family: 'DM Mono', monospace; letter-spacing: 12px; color: var(--gold); font-size: 26px; }
+  h1 { font-size: clamp(40px, 7vw, 74px); font-weight: 600; line-height: 1.05; margin-top: 18px; }
+  h1 em { color: var(--gold); font-style: italic; }
+  .sub { font-family: 'DM Mono', monospace; color: rgba(245,240,232,0.6); font-size: 15px; margin-top: 16px; line-height: 1.7; }
+
+  h2 { font-size: 34px; font-weight: 600; margin: 56px 0 8px; }
+  .h2sub { font-family: 'DM Mono', monospace; font-size: 13px; color: rgba(245,240,232,0.55); margin-bottom: 24px; line-height: 1.7; }
+
+  .cities { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .citycard {
+    border: 1px solid rgba(201,168,76,0.55); padding: 26px 26px 22px;
+    position: relative; background: rgba(245,240,232,0.02);
+  }
+  .citycard h3 { font-size: 34px; font-weight: 600; }
+  .cc-now { display: flex; align-items: baseline; gap: 14px; margin-top: 14px; }
+  .cc-num { font-size: 84px; font-weight: 600; line-height: 0.9; }
+  .cc-unit { font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(245,240,232,0.55); }
+  .cc-cat { font-style: italic; font-size: 22px; margin-top: 4px; }
+  .cc-rows { margin-top: 18px; border-top: 1px solid rgba(245,240,232,0.15); padding-top: 14px;
+             font-family: 'DM Mono', monospace; font-size: 13.5px; line-height: 2.0; color: rgba(245,240,232,0.8); }
+  .cc-rows b { color: var(--paper); font-weight: 500; }
+  .good { color: var(--teal); } .mid { color: var(--gold); } .bad { color: var(--rust); }
+  .cc-img { margin-top: 16px; }
+  .cc-img a { font-family: 'DM Mono', monospace; font-size: 12.5px; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.5); }
+
+  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 13.5px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(245,240,232,0.14); }
+  th { color: var(--gold); font-weight: 500; letter-spacing: 1px; font-size: 12px; text-transform: uppercase; }
+  .tablewrap { overflow-x: auto; border: 1px solid rgba(201,168,76,0.4); }
+
+  .pick { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .pick button {
+    font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 1px;
+    background: none; border: 1px solid rgba(201,168,76,0.5); color: var(--paper);
+    padding: 8px 16px; cursor: pointer;
+  }
+  .pick button.on { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+  .note { font-size: 19px; line-height: 1.55; color: rgba(245,240,232,0.85); max-width: 760px; }
+  .note a { color: var(--gold); }
+
+  footer { margin-top: 80px; border-top: 1px solid rgba(201,168,76,0.5); padding: 36px 0 60px; }
+  .links { display: flex; gap: 20px; flex-wrap: wrap; font-family: 'DM Mono', monospace; font-size: 13.5px; }
+  .links a { color: var(--paper); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.6); padding-bottom: 2px; }
+  .links a.kofi { color: var(--ink); background: var(--gold); border: none; padding: 8px 14px; }
+  .fineprint { margin-top: 26px; font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(245,240,232,0.45); line-height: 1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">VAYU</div>
+    <h1>Air forecasts that <em>grade themselves.</em></h1>
+    <div class="sub" id="updated">Tonight's forecast for Delhi, Mumbai, Pune, Bengaluru and Nashik.<br>
+    Every 48 hour prediction scored against reality, in public, every night.</div>
+  </header>
+
+  <h2>Tonight's cards</h2>
+  <div class="h2sub">Predicted daily mean PM2.5 in ug/m3, with an 80 percent uncertainty band. Indian AQI categories.</div>
+  <div class="cities" id="cities"></div>
+
+  <h2>The scoreboard</h2>
+  <div class="h2sub">Season accuracy = 100 minus the mean absolute percentage error of every graded 48h prediction in the trailing 90 days. Nothing excluded, nothing cherry picked. Exact definition in the <a id="readmelink" style="color:var(--gold)" href="https://github.com/shamathakur77/vayu#the-scoreboard-defined-precisely">README</a>.</div>
+  <div class="tablewrap"><table id="scoreboard">
+    <thead><tr><th>City</th><th>Season accuracy</th><th>MAE</th><th>Naive baseline MAE</th><th>80% band hit rate</th><th>Graded</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2>Every prediction we ever made</h2>
+  <div class="h2sub">The full ledger lives in this repository as plain CSV, one git commit per night. Below: the most recent graded receipts.</div>
+  <div class="pick" id="citypick"></div>
+  <div class="tablewrap"><table id="history">
+    <thead><tr><th>Target day</th><th>Lead</th><th>Predicted</th><th>Band</th><th>Actual</th><th>Error</th><th>In band</th><th>Truth source</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2>Method, honestly</h2>
+  <p class="note">
+    Gradient boosting on each city's own history: recent PM2.5, weather forecasts,
+    seasonality, and for Delhi, Pune and Nashik the satellite fire count upwind.
+    A persistence model (tomorrow equals today) runs alongside as the floor;
+    if we cannot beat it, the scoreboard will say so. Truth is the median of the
+    city's official monitors via OpenAQ, with modeled reanalysis as a flagged fallback.
+    Data: CPCB and data.gov.in, OpenAQ, NASA FIRMS, Open-Meteo. Full audit in the README.
+  </p>
+
+  <footer>
+    <div class="links">
+      <a class="kofi" href="https://ko-fi.com/shamathakur">Support on Ko-fi</a>
+      <a href="https://www.instagram.com/shama_thakur77">Instagram</a>
+      <a href="https://in.pinterest.com/thkrshama/">Pinterest</a>
+      <a href="https://www.linkedin.com/in/shama-t-b7250632">LinkedIn</a>
+      <a href="https://shamathakur.substack.com">Substack</a>
+      <a href="https://shamathakur.carrd.co">shamathakur.carrd.co</a>
+    </div>
+    <div class="fineprint">
+      A Sovereign by Source project. Open data, open code, open scoreboard.<br>
+      Not medical advice. On bad air days: limit outdoor exertion, mask up, filter indoor air.
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var COLORS = { 'Good': 'good', 'Satisfactory': 'good', 'Moderate': 'mid',
+                 'Poor': 'bad', 'Very Poor': 'bad', 'Severe': 'bad' };
+  function pmCategory(pm) {
+    // CPCB PM2.5 24h breakpoints
+    if (pm == null) return '';
+    if (pm <= 30) return 'Good';
+    if (pm <= 60) return 'Satisfactory';
+    if (pm <= 90) return 'Moderate';
+    if (pm <= 120) return 'Poor';
+    if (pm <= 250) return 'Very Poor';
+    return 'Severe';
+  }
+  var state = { scores: [], city: null, names: {} };
+
+  function el(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fetchJSON(url) {
+    return fetch(url, { cache: 'no-store' }).then(function (r) {
+      if (!r.ok) throw new Error(url + ' -> ' + r.status);
+      return r.json();
+    });
+  }
+  function fetchCSV(url) {
+    return fetch(url, { cache: 'no-store' }).then(function (r) {
+      if (!r.ok) throw new Error(url + ' -> ' + r.status);
+      return r.text();
+    }).then(function (text) {
+      var lines = text.trim().split(/\r?\n/);
+      if (lines.length < 2) return [];
+      var head = lines[0].split(',');
+      return lines.slice(1).map(function (line) {
+        var cells = line.split(','), row = {};
+        head.forEach(function (h, i) { row[h] = cells[i]; });
+        return row;
+      });
+    });
+  }
+
+  fetchJSON('data/latest.json').then(function (latest) {
+    el('updated').innerHTML = 'Forecast night: <b>' + esc(latest.date_ist) +
+      '</b> IST · Delhi, Mumbai, Pune, Bengaluru, Nashik<br>' +
+      'Every 48 hour prediction scored against reality, in public, every night.';
+    var html = '';
+    Object.keys(latest.cities).forEach(function (key) {
+      var c = latest.cities[key];
+      state.names[key] = c.name;
+      var now = c.now || {};
+      var tm = c.tomorrow || {};
+      var td = c.today || {};
+      var y = c.yesterday;
+      var nowVal = now.pm25 != null ? now.pm25 : (td.pm25 != null ? td.pm25 : null);
+      var cat = tm.category || '';
+      html += '<div class="citycard">' +
+        '<h3>' + esc(c.name) + '</h3>' +
+        '<div class="cc-now"><div class="cc-num ' +
+          (COLORS[pmCategory(nowVal)] || 'mid') + '">' +
+          (nowVal != null ? esc(nowVal) : '?') + '</div>' +
+        '<div class="cc-unit">ug/m3<br>PM2.5<br>' +
+          esc(now.source === 'cpcb' ? 'live monitors' : 'latest value') + '</div></div>' +
+        '<div class="cc-rows">' +
+        'today <b>' + esc(td.pm25 != null ? td.pm25 : '?') + '</b> · ' +
+        'tomorrow <b>' + esc(tm.pm25 != null ? tm.pm25 : '?') + '</b> ' +
+        '(' + esc(tm.lo) + ' to ' + esc(tm.hi) + ') · <span class="' +
+        (COLORS[cat] || 'mid') + '">' + esc(cat) + '</span><br>' +
+        (y && y.pct_error != null
+          ? 'yesterday: predicted ' + esc(y.predicted) + ', actual ' +
+            esc(y.actual) + ', off by <b>' + esc(y.pct_error) + '%</b>'
+          : 'yesterday: grading pending') +
+        '</div>' +
+        (c.comparison ? '<div class="cc-rows" style="border-top:none;padding-top:6px">' +
+          esc(c.comparison.text) + '</div>' : '') +
+        '<div class="cc-img"><a href="out/cards/latest/' + esc(key) +
+          '.png">open today\'s share card (PNG)</a></div>' +
+        '</div>';
+    });
+    el('cities').innerHTML = html;
+    buildPicker(Object.keys(latest.cities));
+  }).catch(function (e) {
+    el('cities').innerHTML = '<div class="note">First nightly run has not landed yet. ' +
+      'The cards appear here after the next 03:15 IST run.</div>';
+    buildPicker(['delhi', 'mumbai', 'pune', 'bengaluru', 'nashik']);
+  });
+
+  fetchJSON('data/scoreboard.json').then(function (sb) {
+    var rows = '';
+    Object.keys(sb.cities).forEach(function (key) {
+      var c = sb.cities[key];
+      var s = (c.season && c.season.lead2) || null;
+      rows += '<tr><td>' + esc(c.name) + '</td>' +
+        (s ? '<td><b>' + esc(s.accuracy) + '%</b></td><td>' + esc(s.mae) +
+             '</td><td>' + esc(s.baseline_mae) + '</td><td>' +
+             esc(s.band_coverage) + '%</td><td>' + esc(s.n) + '</td>'
+           : '<td colspan="5">no graded predictions yet</td>') + '</tr>';
+    });
+    document.querySelector('#scoreboard tbody').innerHTML = rows;
+  }).catch(function () {
+    document.querySelector('#scoreboard tbody').innerHTML =
+      '<tr><td colspan="6">Scoreboard appears after the first graded night.</td></tr>';
+  });
+
+  function buildPicker(keys) {
+    var html = '';
+    keys.forEach(function (k, i) {
+      html += '<button data-city="' + esc(k) + '" class="' + (i === 0 ? 'on' : '') +
+        '">' + esc(state.names[k] || k) + '</button>';
+    });
+    el('citypick').innerHTML = html;
+    state.city = keys[0];
+    el('citypick').addEventListener('click', function (ev) {
+      var b = ev.target.closest('button');
+      if (!b) return;
+      state.city = b.getAttribute('data-city');
+      Array.prototype.forEach.call(el('citypick').children, function (x) {
+        x.className = x === b ? 'on' : '';
+      });
+      renderHistory();
+    });
+    fetchCSV('data/scores/scores.csv').then(function (rows) {
+      state.scores = rows.reverse();
+      renderHistory();
+    }).catch(function () {
+      document.querySelector('#history tbody').innerHTML =
+        '<tr><td colspan="8">History appears after the first graded night.</td></tr>';
+    });
+  }
+
+  function renderHistory() {
+    var rows = state.scores.filter(function (r) {
+      return r.city === state.city;
+    }).slice(0, 60);
+    if (!rows.length) {
+      document.querySelector('#history tbody').innerHTML =
+        '<tr><td colspan="8">No graded predictions for this city yet.</td></tr>';
+      return;
+    }
+    var html = '';
+    rows.forEach(function (r) {
+      html += '<tr><td>' + esc(r.target_date) + '</td><td>' + esc(r.lead_days) +
+        'd</td><td>' + esc(r.pm25_pred) + '</td><td>' + esc(r.pm25_lo) + ' to ' +
+        esc(r.pm25_hi) + '</td><td>' + esc(r.pm25_actual) + '</td><td>' +
+        esc(r.pct_error) + '%</td><td>' +
+        (r.in_band === 'True' ? '<span class="good">yes</span>'
+                              : '<span class="bad">no</span>') +
+        '</td><td>' + esc(r.obs_source) + '</td></tr>';
+    });
+    document.querySelector('#history tbody').innerHTML = html;
+  }
+})();
+</script>
+</body>
+</html>

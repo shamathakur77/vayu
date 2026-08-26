@@ -1,0 +1,193 @@
+{
+  "version": "1.0",
+  "note": "Every entry carries its exact math, a primary source, and an honest caveat. The card generator rotates through entries whose 'kind' it can compute for the day's PM2.5 value. Unsourced numbers do not ship.",
+  "comparisons": [
+    {
+      "id": "cigarettes_day",
+      "kind": "dynamic",
+      "applies_to": ["all"],
+      "math": "cigarettes = daily mean PM2.5 / 22",
+      "compute": {"op": "divide", "divisor": 22},
+      "phrase": "Breathing {city} air today = smoking {result} cigarettes. No lighter needed.",
+      "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence (Richard A. Muller and Elizabeth A. Muller)",
+      "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
+      "caveat": "A rule of thumb comparing health effects, not identical smoke. The authors call it a rough estimate, and unlike smoking, polluted air is breathed by everyone including kids."
+    },
+    {
+      "id": "cigarettes_week",
+      "kind": "dynamic",
+      "applies_to": ["all"],
+      "math": "cigarettes = (daily mean PM2.5 / 22) x 7",
+      "compute": {"op": "divide_scale", "divisor": 22, "scale": 7},
+      "phrase": "A week of air like this = {result} cigarettes. Your lungs are keeping the receipts.",
+      "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
+      "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
+      "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
+    },
+    {
+      "id": "pack_day",
+      "kind": "dynamic",
+      "applies_to": ["all"],
+      "math": "packs = daily mean PM2.5 / 440, where 440 = 20 cigarettes x 22 ug/m3",
+      "compute": {"op": "divide", "divisor": 440, "min_value": 220},
+      "phrase": "Today is {result} of a full pack of cigarettes, just from breathing.",
+      "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
+      "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
+      "caveat": "Derived from the Berkeley Earth rule (22 ug/m3 per cigarette, 20 per pack). Only shown on days above 220 ug/m3, where pack math stops being hyperbole."
+    },
+    {
+      "id": "who_daily_multiple",
+      "kind": "dynamic",
+      "applies_to": ["all"],
+      "math": "multiple = daily mean PM2.5 / 15 (WHO 2021 24-hour guideline)",
+      "compute": {"op": "multiple", "threshold": 15},
+      "phrase": "That is {result}x the WHO daily safe limit. The limit is 15. We are not close.",
+      "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
+      "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
+      "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
+    },
+    {
+      "id": "who_annual_multiple",
+      "kind": "dynamic",
+      "applies_to": ["all"],
+      "math": "multiple = daily mean PM2.5 / 5 (WHO 2021 annual guideline)",
+      "compute": {"op": "multiple", "threshold": 5},
+      "phrase": "If every day were like today, you would live at {result}x the WHO annual safe level.",
+      "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 annual average 5 ug/m3)",
+      "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
+      "caveat": "Compares one day against an annual guideline, so it describes a hypothetical year of days like today, not your actual annual exposure."
+    },
+    {
+      "id": "aqli_life_years",
+      "kind": "dynamic",
+      "applies_to": ["all"],
+      "math": "years lost = 0.98 x (PM2.5 - 5) / 10, for sustained exposure at this level relative to the WHO guideline",
+      "compute": {"op": "life_years", "per10": 0.98, "baseline": 5, "min_value": 35},
+      "phrase": "Live with this air permanently and it prices out at about {result} years of life expectancy. That is the math, not a mood.",
+      "source_name": "AQLI methodology (Ebenstein et al. 2017), University of Chicago EPIC",
+      "source_url": "https://aqli.epic.uchicago.edu/about/methodology",
+      "caveat": "The AQLI conversion (0.98 years per 10 ug/m3) applies to sustained lifetime exposure, so this is what today's level would cost if it were your permanent normal, not the cost of one bad day."
+    },
+    {
+      "id": "aqli_delhi_fact",
+      "kind": "static",
+      "applies_to": ["delhi"],
+      "math": "none, reported figure",
+      "compute": {"op": "static"},
+      "phrase": "Reminder: Delhi residents are losing 8.2 years of life expectancy to PM2.5, per the AQLI 2025 report. The average Indian loses 3.5.",
+      "source_name": "AQLI 2025 report, EPIC India (Aug 28, 2025)",
+      "source_url": "https://epic.uchicago.in/delhi-residents-losing-8-2-years-of-their-lives-to-high-air-pollution-report/",
+      "caveat": "Relative to permanent attainment of the WHO 5 ug/m3 guideline. A statistical average across the population, not a personal prediction."
+    },
+    {
+      "id": "epa_translation",
+      "kind": "dynamic",
+      "applies_to": ["all"],
+      "math": "category lookup, US EPA PM2.5 24h breakpoints (2024 update)",
+      "compute": {"op": "epa_category"},
+      "phrase": "In the US, today's air would be officially rated '{result}'. Here it is called Tuesday.",
+      "source_name": "US EPA, Technical Assistance Document for the Reporting of Daily Air Quality (AirNow, 2024 breakpoints)",
+      "source_url": "https://document.airnow.gov/technical-assistance-document-for-the-reporting-of-daily-air-quailty.pdf",
+      "caveat": "US categories use the same pollutant with stricter cut points than India's AQI, which is why the same air sounds scarier in American."
+    },
+    {
+      "id": "cpcb_official",
+      "kind": "dynamic",
+      "applies_to": ["all"],
+      "math": "Indian AQI sub-index from PM2.5 24h mean, CPCB breakpoints",
+      "compute": {"op": "cpcb_category"},
+      "phrase": "Official Indian AQI: {aqi} out of 500, category '{result}'. That is the government's own scale.",
+      "source_name": "CPCB, National Air Quality Index (PM2.5 breakpoints)",
+      "source_url": "https://cpcb.nic.in/displaypdf.php?id=bmF0aW9uYWwtYWlyLXF1YWxpdHktaW5kZXgvQWJvdXRfQVFJLnBkZg==",
+      "caveat": "Computed from PM2.5 alone. The full CPCB AQI takes the worst sub-index across pollutants, so the official city AQI can be higher on days another pollutant dominates."
+    },
+    {
+      "id": "who_deaths_global",
+      "kind": "static",
+      "applies_to": ["all"],
+      "math": "none, reported figure",
+      "compute": {"op": "static"},
+      "phrase": "Outdoor air pollution causes about 4.2 million early deaths a year worldwide, says WHO. It is one of the biggest killers nobody posts about.",
+      "source_name": "WHO fact sheet, Ambient (outdoor) air quality and health (2019 estimate)",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+      "caveat": "A modeled global estimate for 2019, the latest WHO headline figure, with uncertainty in the millions."
+    },
+    {
+      "id": "heart_not_lungs",
+      "kind": "static",
+      "applies_to": ["all"],
+      "math": "none, reported shares",
+      "compute": {"op": "static"},
+      "phrase": "Plot twist: 68 percent of outdoor air pollution deaths are heart disease and stroke. It was never just about your lungs.",
+      "source_name": "WHO fact sheet, Ambient (outdoor) air quality and health",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+      "caveat": "WHO's breakdown of premature deaths linked to outdoor air pollution: 68 percent ischaemic heart disease and stroke, 14 percent COPD, 14 percent acute lower respiratory infection, 4 percent lung cancer."
+    },
+    {
+      "id": "loni_rank",
+      "kind": "static",
+      "applies_to": ["all"],
+      "math": "none, reported figures",
+      "compute": {"op": "static"},
+      "phrase": "The most polluted city on Earth in the 2025 IQAir report is Loni, in Delhi NCR: 112.5 ug/m3 average, 22x the WHO limit. All 25 worst cities were in India, Pakistan and China.",
+      "source_name": "IQAir, 2025 World Air Quality Report press release",
+      "source_url": "https://www.iqair.com/newsroom/waqr-2025-pr",
+      "caveat": "IQAir rankings blend government and low-cost sensor data and only cover cities that measure at all. Plenty of unmonitored places never make the list."
+    },
+    {
+      "id": "n95_works",
+      "kind": "static",
+      "applies_to": ["all"],
+      "math": "none, certification standard",
+      "compute": {"op": "static"},
+      "phrase": "A NIOSH N95 removes at least 95 percent of airborne particles when it seals to your face. On days like this, it is not paranoia, it is arithmetic.",
+      "source_name": "CDC NIOSH, Proper N95 Respirator Use (Science Bulletin)",
+      "source_url": "https://www.cdc.gov/niosh/bulletin/2020/n95-preparedness.html",
+      "caveat": "The 95 percent is the certified filter performance with a proper seal. Beards, gaps and surgical masks do not deliver it."
+    },
+    {
+      "id": "kids_breathe_faster",
+      "kind": "static",
+      "applies_to": ["all"],
+      "math": "none, reported mechanism",
+      "compute": {"op": "static"},
+      "phrase": "Kids breathe faster than adults, so they absorb more of this per kilo. They also live closer to the ground, where some pollutants peak. WHO's words, not ours.",
+      "source_name": "WHO, More than 90% of the world's children breathe toxic air every day (2018)",
+      "source_url": "https://www.who.int/news/item/29-10-2018-more-than-90-of-the-worlds-children-breathe-toxic-air-every-day",
+      "caveat": "Direct WHO statements: children 'breathe more rapidly than adults and so absorb more pollutants' and 'live closer to the ground, where some pollutants reach peak concentrations'."
+    },
+    {
+      "id": "archive_worst_season",
+      "kind": "archive",
+      "applies_to": ["all"],
+      "math": "max observed daily mean PM2.5 in this repo's archive over the current season window",
+      "compute": {"op": "archive_worst"},
+      "phrase": "Worst day this season so far: {result} ug/m3 on {result_date}. Today is {relation} that. Receipts in the repo.",
+      "source_name": "VAYU archive (this repository's observation files)",
+      "source_url": "https://github.com/shamathakur77/vayu",
+      "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
+    },
+    {
+      "id": "archive_percentile",
+      "kind": "archive",
+      "applies_to": ["all"],
+      "math": "percentile rank of today's value among this season's observed days",
+      "compute": {"op": "archive_percentile"},
+      "phrase": "Today's air is worse than {result} percent of days this season in {city}. Ranked, logged, versioned.",
+      "source_name": "VAYU archive (this repository's observation files)",
+      "source_url": "https://github.com/shamathakur77/vayu",
+      "caveat": "Season means the trailing 90 days of this project's own observations. Small archive early on means noisy percentiles, and the repo shows exactly how small."
+    },
+    {
+      "id": "cross_city",
+      "kind": "archive",
+      "applies_to": ["all"],
+      "math": "ratio of this city's value to the cleanest tracked city today",
+      "compute": {"op": "cross_city"},
+      "phrase": "{city} today is {result}x the air of {other_city}, the cleanest city we track. Same country, different lungs.",
+      "source_name": "VAYU same-day observations (this repository)",
+      "source_url": "https://github.com/shamathakur77/vayu",
+      "caveat": "Same-day comparison across the five tracked cities using the same measurement rule for each. Only shown when the ratio is at least 1.5."
+    }
+  ]
+}
