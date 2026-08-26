@@ -115,7 +115,7 @@ by the next night's backfill where possible.
 | CPCB real time AQI via [data.gov.in](https://data.gov.in) (resource `3b01bcb8`) | Working, live station data | Free signup. Ships with the public sample key as fallback, which is heavily throttled | The "measured right now" number on cards | Current snapshot only, no history at this endpoint. Known flaky: the fetcher tries query and header auth, retries with backoff, and falls back to OpenAQ or the latest daily value. Nashik station coverage is thin; on gap days the card says "predicted for today" instead |
 | [OpenAQ v3](https://docs.openaq.org) | Working | Free API key required | The graded daily truth (monitor medians) and all monitor history | Free tier rate limits apply (see their limits page). VAYU stays tiny: sensor discovery is cached, a normal night is well under 100 requests. OpenAQ mirrors CPCB stations; if CPCB feeds go dark upstream, monitor days go to the CAMS fallback and are flagged |
 | [Open-Meteo](https://open-meteo.com) air quality + weather + archive | Working | None | Weather features, forecasts, CAMS PM2.5 fallback series, ERA5 backtest weather | Free for non-commercial use. Their terms: "Less than 10'000 API calls per day, 5'000 per hour and 600 per minute." VAYU uses about 40 calls a night. The air quality endpoint documents `past_days` up to 92; the bootstrap requests older history with `start_date`, which their docs describe less clearly, so the bootstrap logs loudly if a range is refused and the OpenAQ monitor history carries the seed instead |
-| [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/api/area/) area API | Working | Free MAP_KEY signup | Active fire counts (VIIRS): stubble season feature for Delhi, minor feature for Pune and Nashik | 5000 transactions per 10 minutes, max 5 days per query. VAYU uses a handful of calls a night. Fire counts are recorded as missing (not zero) when the key is absent or the call fails, so the data never lies about what was looked at |
+| [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/api/area/) area API | Working from browsers; UNRELIABLE from GitHub Actions runners (connection refused at network level, observed Aug 2026) | Free MAP_KEY signup | Active fire counts (VIIRS): stubble season feature for Delhi, minor feature for Pune and Nashik | 5000 transactions per 10 minutes, max 5 days per query. A circuit breaker stops retrying after 2 consecutive connection failures in a run, so an unreachable FIRMS costs seconds, not the whole night. Fire counts are recorded as missing (not zero) whenever the key is absent, the host is unreachable, or a call fails, and the model imputes missing as zero. The forecast never depends on fires; they are a bonus signal when reachable |
 | GitHub Actions | n/a | n/a | The entire pipeline | Free for public repositories on standard runners. The nightly run takes a few minutes. Keep the repo public and this stays free forever |
 | GitHub Pages | n/a | n/a | The site | Free, soft limits (100 GB bandwidth per month, 1 GB site). Dated card PNGs are pruned after 90 days to keep the repo lean; the numbers behind them stay forever in the CSVs |
 
@@ -128,6 +128,12 @@ Honest gaps to know about:
 * Historical fire counts for the backtest use the VIIRS standard
   processing archive (`VIIRS_SNPP_SP`); very recent days use near real
   time (`VIIRS_SNPP_NRT`). Counts can differ slightly between the two.
+* As of the August 2026 setup, GitHub's runner network could not reach
+  the FIRMS host at all, so the seeded history contains no fire
+  counts and the live model runs without the fire feature until the
+  connectivity changes. Delhi's stubble season signal then rests on
+  weather, seasonality and the city's own recent history. This is a
+  known accuracy cost, stated here instead of hidden.
 * Nashik has the fewest monitors of the five cities. Expect more
   `source=cams` days there. The scoreboard's `obs_source` column makes
   those days visible instead of pretending otherwise.
