@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+cards/_render_*.html
+.DS_Store
