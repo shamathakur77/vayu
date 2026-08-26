@@ -1,0 +1,197 @@
+{
+  "bengaluru": [
+    {
+      "location": "Peenya, Bengaluru - KSPCB",
+      "provider": "CPCB",
+      "sensor_id": 13852
+    },
+    {
+      "location": "BTM Layout, Bengaluru - KSPCB",
+      "provider": "CPCB",
+      "sensor_id": 13836
+    },
+    {
+      "location": "BWSSB Kadabesanahalli, Bengaluru - KSPCB",
+      "provider": "CPCB",
+      "sensor_id": 13898
+    },
+    {
+      "location": "BWSSB Kadabesanahalli, Bengaluru - CPCB",
+      "provider": "caaqm",
+      "sensor_id": 14641
+    },
+    {
+      "location": "BTM Layout, Bengaluru - CPCB",
+      "provider": "CPCB",
+      "sensor_id": 12235361
+    },
+    {
+      "location": "BTM Layout, Bengaluru - CPCB",
+      "provider": "CPCB",
+      "sensor_id": 14635
+    },
+    {
+      "location": "Peenya, Bengaluru - CPCB",
+      "provider": "CPCB",
+      "sensor_id": 12235370
+    },
+    {
+      "location": "Peenya, Bengaluru - CPCB",
+      "provider": "CPCB",
+      "sensor_id": 14859
+    }
+  ],
+  "delhi": [
+    {
+      "location": "Delhi Technological University, Delhi - CPCB",
+      "provider": "CPCB",
+      "sensor_id": 13864
+    },
+    {
+      "location": "IGI Airport",
+      "provider": "CPCB",
+      "sensor_id": 30
+    },
+    {
+      "location": "Civil Lines",
+      "provider": "CPCB",
+      "sensor_id": 34
+    },
+    {
+      "location": "R K Puram, Delhi - DPCC",
+      "provider": "CPCB",
+      "sensor_id": 12234787
+    },
+    {
+      "location": "R K Puram, Delhi - DPCC",
+      "provider": "CPCB",
+      "sensor_id": 35
+    },
+    {
+      "location": "Punjabi Bagh, Delhi - DPCC",
+      "provider": "CPCB",
+      "sensor_id": 396
+    },
+    {
+      "location": "Punjabi Bagh, Delhi - DPCC",
+      "provider": "CPCB",
+      "sensor_id": 12234796
+    },
+    {
+      "location": "Income Tax Office, Delhi - CPCB",
+      "provider": "CPCB",
+      "sensor_id": 13861
+    }
+  ],
+  "mumbai": [
+    {
+      "location": "Navi Mumbai Municipal Corporation Airoli",
+      "provider": "CPCB",
+      "sensor_id": 5404
+    },
+    {
+      "location": "Pimpleshwar Mandir, Thane - MPCB",
+      "provider": "caaqm",
+      "sensor_id": 14806
+    },
+    {
+      "location": "Colaba, Mumbai - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 20143
+    },
+    {
+      "location": "Colaba, Mumbai - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 12235926
+    },
+    {
+      "location": "Mahape, Navi Mumbai - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 12235905
+    },
+    {
+      "location": "Mahape, Navi Mumbai - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 20046
+    },
+    {
+      "location": "Kurla, Mumbai - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 19978
+    },
+    {
+      "location": "Kurla, Mumbai - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 12235834
+    }
+  ],
+  "nashik": [
+    {
+      "location": "Gangapur Road, Nashik - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 12235635
+    },
+    {
+      "location": "Gangapur Road, Nashik - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 14794
+    },
+    {
+      "location": "Pandav Nagari, Nashik - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 12238112
+    },
+    {
+      "location": "MIDC Ambad, Nashik - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 12238130
+    },
+    {
+      "location": "Hirawadi, Nashik - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 12238139
+    }
+  ],
+  "pune": [
+    {
+      "location": "AAQMS Karve Road Pune",
+      "provider": "CPCB",
+      "sensor_id": 5354
+    },
+    {
+      "location": "Karve Road Pune, Pune - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 12235540
+    },
+    {
+      "location": "Karve Road Pune, Pune - MPCB",
+      "provider": "CPCB",
+      "sensor_id": 15154
+    },
+    {
+      "location": "Bhosari, Pune - IITM",
+      "provider": "caaqm",
+      "sensor_id": 39439
+    },
+    {
+      "location": "Mhada Colony, Pune - IITM",
+      "provider": "CPCB",
+      "sensor_id": 12236443
+    },
+    {
+      "location": "Mhada Colony, Pune - IITM",
+      "provider": "CPCB",
+      "sensor_id": 39444
+    },
+    {
+      "location": "Transport Nagar-Nigdi, Pune - IITM",
+      "provider": "CPCB",
+      "sensor_id": 12236457
+    },
+    {
+      "location": "Revenue Colony-Shivajinagar, Pune - IITM",
+      "provider": "CPCB",
+      "sensor_id": 12236463
+    }
+  ]
+}
