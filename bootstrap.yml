@@ -1,0 +1,51 @@
+name: bootstrap-history
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: "History start date (YYYY-MM-DD)"
+        required: false
+        default: "2022-07-01"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vayu-pipeline
+  cancel-in-progress: false
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Seed history
+        env:
+          DATA_GOV_IN_KEY: ${{ secrets.DATA_GOV_IN_KEY }}
+          OPENAQ_KEY: ${{ secrets.OPENAQ_KEY }}
+          FIRMS_KEY: ${{ secrets.FIRMS_KEY }}
+        run: python -m pipeline.bootstrap_history --start "${{ inputs.start }}"
+
+      - name: Commit observations
+        run: |
+          git config user.name "vayu-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A data
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "bootstrap: seed history from ${{ inputs.start }}"
+            git pull --rebase origin ${GITHUB_REF_NAME}
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
