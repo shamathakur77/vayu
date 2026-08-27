@@ -1,0 +1,134 @@
+{
+  "generated_at": "2026-08-27T01:14:48Z",
+  "date_ist": "2026-08-27",
+  "cities": {
+    "delhi": {
+      "name": "Delhi",
+      "now": {
+        "pm25": 95.3,
+        "source": "latest daily (cams)",
+        "last_update": "2026-08-26"
+      },
+      "today": {
+        "target_date": "2026-08-27",
+        "pm25": 57.4,
+        "lo": 39.3,
+        "hi": 90.4,
+        "aqi": 96,
+        "category": "Satisfactory"
+      },
+      "tomorrow": {
+        "target_date": "2026-08-28",
+        "pm25": 73.2,
+        "lo": 52.3,
+        "hi": 93.3,
+        "aqi": 145,
+        "category": "Moderate"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "cross_city",
+        "text": "Delhi today is 11x the air of Bengaluru, the cleanest city we track. Same country, different lungs.",
+        "source_name": "VAYU same-day observations (this repository)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Same-day comparison across the five tracked cities using the same measurement rule for each. Only shown when the ratio is at least 1.5."
+      }
+    },
+    "mumbai": {
+      "name": "Mumbai",
+      "now": {
+        "pm25": 19.1,
+        "source": "latest daily (cams)",
+        "last_update": "2026-08-26"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "who_deaths_global",
+        "text": "Outdoor air pollution causes about 4.2 million early deaths a year worldwide, says WHO. It is one of the biggest killers nobody posts about.",
+        "source_name": "WHO fact sheet, Ambient (outdoor) air quality and health (2019 estimate)",
+        "source_url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "caveat": "A modeled global estimate for 2019, the latest WHO headline figure, with uncertainty in the millions."
+      }
+    },
+    "pune": {
+      "name": "Pune",
+      "now": {
+        "pm25": 11.0,
+        "source": "latest daily (cams)",
+        "last_update": "2026-08-26"
+      },
+      "today": {
+        "target_date": "2026-08-27",
+        "pm25": 16.7,
+        "lo": 8.0,
+        "hi": 19.9,
+        "aqi": 28,
+        "category": "Good"
+      },
+      "tomorrow": {
+        "target_date": "2026-08-28",
+        "pm25": 17.2,
+        "lo": 7.4,
+        "hi": 20.8,
+        "aqi": 29,
+        "category": "Good"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "archive_worst_season",
+        "text": "Worst day this season so far: 27 ug/m3 on 2026-06-08. Today is below that. Receipts in the repo.",
+        "source_name": "VAYU archive (this repository's observation files)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
+      }
+    },
+    "bengaluru": {
+      "name": "Bengaluru",
+      "now": {
+        "pm25": 37.0,
+        "source": "cpcb",
+        "last_update": "27-08-2026 05:00:00"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "aqli_life_years",
+        "text": "Live with this air permanently and it prices out at about 3 years of life expectancy. That is the math, not a mood.",
+        "source_name": "AQLI methodology (Ebenstein et al. 2017), University of Chicago EPIC",
+        "source_url": "https://aqli.epic.uchicago.edu/about/methodology",
+        "caveat": "The AQLI conversion (0.98 years per 10 ug/m3) applies to sustained lifetime exposure, so this is what today's level would cost if it were your permanent normal, not the cost of one bad day."
+      }
+    },
+    "nashik": {
+      "name": "Nashik",
+      "now": {
+        "pm25": 11.3,
+        "source": "latest daily (cams)",
+        "last_update": "2026-08-26"
+      },
+      "today": {
+        "target_date": "2026-08-27",
+        "pm25": 13.8,
+        "lo": 10.3,
+        "hi": 20.6,
+        "aqi": 23,
+        "category": "Good"
+      },
+      "tomorrow": {
+        "target_date": "2026-08-28",
+        "pm25": 14.3,
+        "lo": 9.9,
+        "hi": 19.7,
+        "aqi": 24,
+        "category": "Good"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "cigarettes_week",
+        "text": "A week of air like this = 3.5 cigarettes. Your lungs are keeping the receipts.",
+        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
+        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
+        "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
+      }
+    }
+  }
+}

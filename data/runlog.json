@@ -1,0 +1,12 @@
+{
+  "finished_at": "2026-08-27T01:23:33Z",
+  "errors": [
+    "mumbai: forecast crashed: window shape cannot be larger than input array shape",
+    "bengaluru: forecast crashed: window shape cannot be larger than input array shape"
+  ],
+  "cities_forecast": [
+    "delhi",
+    "nashik",
+    "pune"
+  ]
+}
