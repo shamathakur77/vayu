@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-08-28T06:00:57Z",
+  "generated_at": "2026-08-28T11:10:18Z",
   "date_ist": "2026-08-28",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 80.0,
+        "pm25": 76.0,
         "source": "cpcb",
-        "last_update": "28-08-2026 11:00:00"
+        "last_update": "28-08-2026 16:00:00"
       },
       "today": {
         "target_date": "2026-08-28",
-        "pm25": 78.4,
-        "lo": 49.8,
-        "hi": 88.4,
-        "aqi": 162,
+        "pm25": 69.1,
+        "lo": 43.7,
+        "hi": 86.4,
+        "aqi": 131,
         "category": "Moderate"
       },
       "tomorrow": {
         "target_date": "2026-08-29",
-        "pm25": 83.6,
-        "lo": 52.0,
-        "hi": 95.0,
+        "pm25": 83.7,
+        "lo": 51.6,
+        "hi": 94.5,
         "aqi": 179,
         "category": "Moderate"
       },
@@ -45,9 +45,9 @@
     "mumbai": {
       "name": "Mumbai",
       "now": {
-        "pm25": 20.0,
+        "pm25": 19.0,
         "source": "cpcb",
-        "last_update": "28-08-2026 11:00:00"
+        "last_update": "28-08-2026 16:00:00"
       },
       "yesterday": null,
       "comparison": {
@@ -61,23 +61,23 @@
     "pune": {
       "name": "Pune",
       "now": {
-        "pm25": 31.0,
+        "pm25": 29.0,
         "source": "cpcb",
-        "last_update": "28-08-2026 11:00:00"
+        "last_update": "28-08-2026 16:00:00"
       },
       "today": {
         "target_date": "2026-08-28",
-        "pm25": 10.6,
-        "lo": 5.6,
+        "pm25": 10.7,
+        "lo": 5.4,
         "hi": 18.7,
         "aqi": 18,
         "category": "Good"
       },
       "tomorrow": {
         "target_date": "2026-08-29",
-        "pm25": 10.4,
+        "pm25": 10.2,
         "lo": 5.1,
-        "hi": 18.9,
+        "hi": 19.2,
         "aqi": 17,
         "category": "Good"
       },
@@ -101,14 +101,14 @@
     "bengaluru": {
       "name": "Bengaluru",
       "now": {
-        "pm25": 29.0,
+        "pm25": 28.0,
         "source": "cpcb",
-        "last_update": "28-08-2026 11:00:00"
+        "last_update": "28-08-2026 16:00:00"
       },
       "yesterday": null,
       "comparison": {
         "id": "cpcb_official",
-        "text": "Official Indian AQI: 48 out of 500, category 'Good'. That is the government's own scale.",
+        "text": "Official Indian AQI: 47 out of 500, category 'Good'. That is the government's own scale.",
         "source_name": "CPCB, National Air Quality Index (PM2.5 breakpoints)",
         "source_url": "https://cpcb.nic.in/displaypdf.php?id=bmF0aW9uYWwtYWlyLXF1YWxpdHktaW5kZXgvQWJvdXRfQVFJLnBkZg==",
         "caveat": "Computed from PM2.5 alone. The full CPCB AQI takes the worst sub-index across pollutants, so the official city AQI can be higher on days another pollutant dominates."
@@ -117,24 +117,24 @@
     "nashik": {
       "name": "Nashik",
       "now": {
-        "pm25": 21.5,
+        "pm25": 21.0,
         "source": "cpcb",
-        "last_update": "28-08-2026 11:00:00"
+        "last_update": "28-08-2026 16:00:00"
       },
       "today": {
         "target_date": "2026-08-28",
-        "pm25": 8.5,
-        "lo": 7.9,
-        "hi": 11.1,
+        "pm25": 8.4,
+        "lo": 7.7,
+        "hi": 10.9,
         "aqi": 14,
         "category": "Good"
       },
       "tomorrow": {
         "target_date": "2026-08-29",
-        "pm25": 9.5,
-        "lo": 8.1,
-        "hi": 14.3,
-        "aqi": 16,
+        "pm25": 9.3,
+        "lo": 7.3,
+        "hi": 13.9,
+        "aqi": 15,
         "category": "Good"
       },
       "yesterday": {

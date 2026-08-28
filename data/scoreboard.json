@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T05:58:39Z",
+  "generated_at": "2026-08-28T11:08:49Z",
   "season_window_days": 90,
   "definition": "Season accuracy = 100 - MAPE of graded 48h (lead 2) predictions with target dates in the trailing 90 days. Band target: 80 percent coverage. Full definition in the README.",
   "cities": {
