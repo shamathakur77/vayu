@@ -161,7 +161,11 @@ def calibrate_band(lo, mid, hi, residuals):
     80 percent band should err on the side of humility."""
     if residuals is None or len(residuals) < 20:
         return lo, hi
-    r10, r90 = np.quantile(residuals[-60:], [0.1, 0.9])
+    # Safe slice: use last 60 residuals if available, else all
+    recent = residuals[-60:] if len(residuals) >= 60 else residuals
+    if len(recent) == 0:
+        return lo, hi
+    r10, r90 = np.quantile(recent, [0.1, 0.9])
     lo = min(lo, max(1.0, mid + r10))
     hi = max(hi, mid + r90)
     return lo, hi
