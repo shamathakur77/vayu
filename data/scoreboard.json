@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T01:12:02Z",
+  "generated_at": "2026-08-28T05:58:39Z",
   "season_window_days": 90,
   "definition": "Season accuracy = 100 - MAPE of graded 48h (lead 2) predictions with target dates in the trailing 90 days. Band target: 80 percent coverage. Full definition in the README.",
   "cities": {
@@ -7,11 +7,25 @@
       "name": "Delhi",
       "season": {
         "lead2": null,
-        "lead1": null
+        "lead1": {
+          "n": 1,
+          "mae": 19.9,
+          "mape": 25.7,
+          "accuracy": 74.3,
+          "baseline_mae": 18.0,
+          "band_coverage": 100.0
+        }
       },
       "all_time": {
         "lead2": null,
-        "lead1": null
+        "lead1": {
+          "n": 1,
+          "mae": 19.9,
+          "mape": 25.7,
+          "accuracy": 74.3,
+          "baseline_mae": 18.0,
+          "band_coverage": 100.0
+        }
       }
     },
     "mumbai": {
@@ -29,11 +43,25 @@
       "name": "Pune",
       "season": {
         "lead2": null,
-        "lead1": null
+        "lead1": {
+          "n": 1,
+          "mae": 9.4,
+          "mape": 128.8,
+          "accuracy": 0.0,
+          "baseline_mae": 3.7,
+          "band_coverage": 0.0
+        }
       },
       "all_time": {
         "lead2": null,
-        "lead1": null
+        "lead1": {
+          "n": 1,
+          "mae": 9.4,
+          "mape": 128.8,
+          "accuracy": 0.0,
+          "baseline_mae": 3.7,
+          "band_coverage": 0.0
+        }
       }
     },
     "bengaluru": {
@@ -51,11 +79,25 @@
       "name": "Nashik",
       "season": {
         "lead2": null,
-        "lead1": null
+        "lead1": {
+          "n": 1,
+          "mae": 5.6,
+          "mape": 68.3,
+          "accuracy": 31.7,
+          "baseline_mae": 3.1,
+          "band_coverage": 0.0
+        }
       },
       "all_time": {
         "lead2": null,
-        "lead1": null
+        "lead1": {
+          "n": 1,
+          "mae": 5.6,
+          "mape": 68.3,
+          "accuracy": 31.7,
+          "baseline_mae": 3.1,
+          "band_coverage": 0.0
+        }
       }
     }
   }

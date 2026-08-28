@@ -1,0 +1,4 @@
+city,target_date,lead_days,pm25_pred,pm25_lo,pm25_hi,baseline_pred,pm25_actual,obs_source,abs_error,pct_error,baseline_abs_error,in_band,graded_on
+delhi,2026-08-27,1,57.4,39.3,90.4,95.3,77.3,cams,19.9,25.7,18.0,True,2026-08-28T05:58:39Z
+pune,2026-08-27,1,16.7,8.0,19.9,11.0,7.3,cams,9.4,128.8,3.7,False,2026-08-28T05:58:39Z
+nashik,2026-08-27,1,13.8,10.3,20.6,11.3,8.2,cams,5.6,68.3,3.1,False,2026-08-28T05:58:39Z
