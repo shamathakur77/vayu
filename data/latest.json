@@ -1,95 +1,55 @@
 {
-  "generated_at": "2026-09-01T01:10:39Z",
-  "date_ist": "2026-09-01",
+  "generated_at": "2026-09-03T00:00:46Z",
+  "date_ist": "2026-09-03",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 48.0,
+        "pm25": 41.5,
         "source": "cpcb",
-        "last_update": "01-09-2026 05:00:00"
+        "last_update": "03-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-01",
-        "pm25": 85.9,
-        "lo": 58.2,
-        "hi": 119.3,
-        "aqi": 187,
-        "category": "Moderate"
+        "target_date": "2026-09-03",
+        "pm25": 50.4,
+        "lo": 39.5,
+        "hi": 96.5,
+        "aqi": 84,
+        "category": "Satisfactory"
       },
       "tomorrow": {
-        "target_date": "2026-09-02",
-        "pm25": 68.3,
-        "lo": 54.8,
-        "hi": 121.5,
-        "aqi": 128,
-        "category": "Moderate"
+        "target_date": "2026-09-04",
+        "pm25": 48.0,
+        "lo": 28.5,
+        "hi": 99.0,
+        "aqi": 80,
+        "category": "Satisfactory"
       },
       "yesterday": {
-        "target_date": "2026-08-31",
-        "lead_days": 1,
-        "predicted": 89.9,
-        "actual": 106.8,
-        "pct_error": 15.8,
+        "target_date": "2026-09-02",
+        "lead_days": 2,
+        "predicted": 68.3,
+        "actual": 45.6,
+        "pct_error": 49.8,
         "in_band": false,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "aqli_life_years",
-        "text": "Live with this air permanently and it prices out at about 4 years of life expectancy. That is the math, not a mood.",
-        "source_name": "AQLI methodology (Ebenstein et al. 2017), University of Chicago EPIC",
-        "source_url": "https://aqli.epic.uchicago.edu/about/methodology",
-        "caveat": "The AQLI conversion (0.98 years per 10 ug/m3) applies to sustained lifetime exposure, so this is what today's level would cost if it were your permanent normal, not the cost of one bad day."
+        "id": "epa_translation",
+        "text": "In the US, today's air would be officially rated 'Unhealthy for Sensitive Groups'. Here it is called Tuesday.",
+        "source_name": "US EPA, Technical Assistance Document for the Reporting of Daily Air Quality (AirNow, 2024 breakpoints)",
+        "source_url": "https://document.airnow.gov/technical-assistance-document-for-the-reporting-of-daily-air-quailty.pdf",
+        "caveat": "US categories use the same pollutant with stricter cut points than India's AQI, which is why the same air sounds scarier in American."
       }
     },
     "mumbai": {
       "name": "Mumbai",
       "now": {
-        "pm25": 15.0,
-        "source": "cpcb",
-        "last_update": "01-09-2026 05:00:00"
+        "pm25": 12.5,
+        "source": "latest daily (cams)",
+        "last_update": "2026-09-02"
       },
       "yesterday": null,
-      "comparison": {
-        "id": "who_deaths_global",
-        "text": "Outdoor air pollution causes about 4.2 million early deaths a year worldwide, says WHO. It is one of the biggest killers nobody posts about.",
-        "source_name": "WHO fact sheet, Ambient (outdoor) air quality and health (2019 estimate)",
-        "source_url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
-        "caveat": "A modeled global estimate for 2019, the latest WHO headline figure, with uncertainty in the millions."
-      }
-    },
-    "pune": {
-      "name": "Pune",
-      "now": {
-        "pm25": 30.0,
-        "source": "cpcb",
-        "last_update": "01-09-2026 05:00:00"
-      },
-      "today": {
-        "target_date": "2026-09-01",
-        "pm25": 6.8,
-        "lo": 5.1,
-        "hi": 11.4,
-        "aqi": 11,
-        "category": "Good"
-      },
-      "tomorrow": {
-        "target_date": "2026-09-02",
-        "pm25": 6.8,
-        "lo": 5.7,
-        "hi": 11.6,
-        "aqi": 11,
-        "category": "Good"
-      },
-      "yesterday": {
-        "target_date": "2026-08-31",
-        "lead_days": 1,
-        "predicted": 5.9,
-        "actual": 5.8,
-        "pct_error": 1.7,
-        "in_band": true,
-        "obs_source": "cams"
-      },
       "comparison": {
         "id": "loni_rank",
         "text": "The most polluted city on Earth in the 2025 IQAir report is Loni, in Delhi NCR: 112.5 ug/m3 average, 22x the WHO limit. All 25 worst cities were in India, Pakistan and China.",
@@ -98,60 +58,100 @@
         "caveat": "IQAir rankings blend government and low-cost sensor data and only cover cities that measure at all. Plenty of unmonitored places never make the list."
       }
     },
-    "bengaluru": {
-      "name": "Bengaluru",
+    "pune": {
+      "name": "Pune",
       "now": {
-        "pm25": 29.0,
+        "pm25": 28.5,
         "source": "cpcb",
-        "last_update": "01-09-2026 05:00:00"
-      },
-      "yesterday": null,
-      "comparison": {
-        "id": "n95_works",
-        "text": "A NIOSH N95 removes at least 95 percent of airborne particles when it seals to your face. On days like this, it is not paranoia, it is arithmetic.",
-        "source_name": "CDC NIOSH, Proper N95 Respirator Use (Science Bulletin)",
-        "source_url": "https://www.cdc.gov/niosh/bulletin/2020/n95-preparedness.html",
-        "caveat": "The 95 percent is the certified filter performance with a proper seal. Beards, gaps and surgical masks do not deliver it."
-      }
-    },
-    "nashik": {
-      "name": "Nashik",
-      "now": {
-        "pm25": 18.0,
-        "source": "cpcb",
-        "last_update": "01-09-2026 05:00:00"
+        "last_update": "03-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-01",
-        "pm25": 6.2,
-        "lo": 5.6,
-        "hi": 8.8,
-        "aqi": 10,
+        "target_date": "2026-09-03",
+        "pm25": 4.5,
+        "lo": 4.4,
+        "hi": 7.1,
+        "aqi": 8,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-02",
-        "pm25": 6.3,
-        "lo": 5.2,
-        "hi": 9.4,
-        "aqi": 11,
+        "target_date": "2026-09-04",
+        "pm25": 4.3,
+        "lo": 4.3,
+        "hi": 7.4,
+        "aqi": 7,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-08-31",
-        "lead_days": 1,
-        "predicted": 7.8,
-        "actual": 4.9,
-        "pct_error": 59.2,
+        "target_date": "2026-09-02",
+        "lead_days": 2,
+        "predicted": 6.8,
+        "actual": 4.8,
+        "pct_error": 41.7,
         "in_band": false,
         "obs_source": "cams"
       },
       "comparison": {
         "id": "cigarettes_week",
-        "text": "A week of air like this = 5.5 cigarettes. Your lungs are keeping the receipts.",
+        "text": "A week of air like this = 9 cigarettes. Your lungs are keeping the receipts.",
         "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
         "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
         "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
+      }
+    },
+    "bengaluru": {
+      "name": "Bengaluru",
+      "now": {
+        "pm25": 29.5,
+        "source": "cpcb",
+        "last_update": "03-09-2026 05:00:00"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "archive_worst_season",
+        "text": "Worst day this season so far: 46 ug/m3 on 2026-06-06. Today is below that. Receipts in the repo.",
+        "source_name": "VAYU archive (this repository's observation files)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
+      }
+    },
+    "nashik": {
+      "name": "Nashik",
+      "now": {
+        "pm25": 13.0,
+        "source": "cpcb",
+        "last_update": "03-09-2026 05:00:00"
+      },
+      "today": {
+        "target_date": "2026-09-03",
+        "pm25": 4.0,
+        "lo": 3.8,
+        "hi": 8.3,
+        "aqi": 7,
+        "category": "Good"
+      },
+      "tomorrow": {
+        "target_date": "2026-09-04",
+        "pm25": 4.0,
+        "lo": 3.8,
+        "hi": 8.3,
+        "aqi": 7,
+        "category": "Good"
+      },
+      "yesterday": {
+        "target_date": "2026-09-02",
+        "lead_days": 2,
+        "predicted": 6.3,
+        "actual": 5.8,
+        "pct_error": 8.6,
+        "in_band": true,
+        "obs_source": "cams"
+      },
+      "comparison": {
+        "id": "archive_worst_season",
+        "text": "Worst day this season so far: 26 ug/m3 on 2026-06-05. Today is below that. Receipts in the repo.",
+        "source_name": "VAYU archive (this repository's observation files)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
       }
     }
   }

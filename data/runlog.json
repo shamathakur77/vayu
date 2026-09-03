@@ -1,8 +1,7 @@
 {
-  "finished_at": "2026-09-01T01:10:46Z",
+  "finished_at": "2026-09-03T00:01:04Z",
   "errors": [
     "mumbai: forecast crashed: window shape cannot be larger than input array shape",
-    "bengaluru: forecast weather failed: all 3 attempts failed for https://api.open-meteo.com/v1/forecast: ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=30)\"))",
     "bengaluru: forecast crashed: window shape cannot be larger than input array shape"
   ],
   "cities_forecast": [
