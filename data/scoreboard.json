@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T23:56:13Z",
+  "generated_at": "2026-09-04T23:43:59Z",
   "season_window_days": 90,
   "definition": "Season accuracy = 100 - MAPE of graded 48h (lead 2) predictions with target dates in the trailing 90 days. Band target: 80 percent coverage. Full definition in the README.",
   "cities": {
@@ -7,38 +7,38 @@
       "name": "Delhi",
       "season": {
         "lead2": {
-          "n": 6,
-          "mae": 20.8,
-          "mape": 24.3,
-          "accuracy": 75.7,
-          "baseline_mae": 25.6,
-          "band_coverage": 50.0
+          "n": 7,
+          "mae": 18.3,
+          "mape": 21.8,
+          "accuracy": 78.2,
+          "baseline_mae": 22.1,
+          "band_coverage": 57.1
         },
         "lead1": {
-          "n": 7,
-          "mae": 19.5,
-          "mape": 26.9,
-          "accuracy": 73.1,
-          "baseline_mae": 17.8,
-          "band_coverage": 57.1
+          "n": 8,
+          "mae": 17.7,
+          "mape": 25.0,
+          "accuracy": 75.0,
+          "baseline_mae": 17.5,
+          "band_coverage": 62.5
         }
       },
       "all_time": {
         "lead2": {
-          "n": 6,
-          "mae": 20.8,
-          "mape": 24.3,
-          "accuracy": 75.7,
-          "baseline_mae": 25.6,
-          "band_coverage": 50.0
+          "n": 7,
+          "mae": 18.3,
+          "mape": 21.8,
+          "accuracy": 78.2,
+          "baseline_mae": 22.1,
+          "band_coverage": 57.1
         },
         "lead1": {
-          "n": 7,
-          "mae": 19.5,
-          "mape": 26.9,
-          "accuracy": 73.1,
-          "baseline_mae": 17.8,
-          "band_coverage": 57.1
+          "n": 8,
+          "mae": 17.7,
+          "mape": 25.0,
+          "accuracy": 75.0,
+          "baseline_mae": 17.5,
+          "band_coverage": 62.5
         }
       }
     },
@@ -57,38 +57,38 @@
       "name": "Pune",
       "season": {
         "lead2": {
-          "n": 6,
-          "mae": 3.4,
-          "mape": 70.4,
-          "accuracy": 29.6,
-          "baseline_mae": 2.0,
-          "band_coverage": 50.0
+          "n": 7,
+          "mae": 3.2,
+          "mape": 64.9,
+          "accuracy": 35.1,
+          "baseline_mae": 1.9,
+          "band_coverage": 57.1
         },
         "lead1": {
-          "n": 7,
-          "mae": 2.6,
-          "mape": 42.1,
-          "accuracy": 57.9,
-          "baseline_mae": 1.4,
-          "band_coverage": 71.4
+          "n": 8,
+          "mae": 2.4,
+          "mape": 38.6,
+          "accuracy": 61.4,
+          "baseline_mae": 1.2,
+          "band_coverage": 75.0
         }
       },
       "all_time": {
         "lead2": {
-          "n": 6,
-          "mae": 3.4,
-          "mape": 70.4,
-          "accuracy": 29.6,
-          "baseline_mae": 2.0,
-          "band_coverage": 50.0
+          "n": 7,
+          "mae": 3.2,
+          "mape": 64.9,
+          "accuracy": 35.1,
+          "baseline_mae": 1.9,
+          "band_coverage": 57.1
         },
         "lead1": {
-          "n": 7,
-          "mae": 2.6,
-          "mape": 42.1,
-          "accuracy": 57.9,
-          "baseline_mae": 1.4,
-          "band_coverage": 71.4
+          "n": 8,
+          "mae": 2.4,
+          "mape": 38.6,
+          "accuracy": 61.4,
+          "baseline_mae": 1.2,
+          "band_coverage": 75.0
         }
       }
     },
@@ -107,38 +107,38 @@
       "name": "Nashik",
       "season": {
         "lead2": {
-          "n": 6,
-          "mae": 4.5,
-          "mape": 97.8,
-          "accuracy": 2.2,
-          "baseline_mae": 1.9,
-          "band_coverage": 16.7
+          "n": 7,
+          "mae": 4.1,
+          "mape": 87.3,
+          "accuracy": 12.7,
+          "baseline_mae": 1.7,
+          "band_coverage": 28.6
         },
         "lead1": {
-          "n": 7,
-          "mae": 3.4,
-          "mape": 65.3,
-          "accuracy": 34.7,
-          "baseline_mae": 1.5,
-          "band_coverage": 14.3
+          "n": 8,
+          "mae": 3.0,
+          "mape": 58.6,
+          "accuracy": 41.4,
+          "baseline_mae": 1.4,
+          "band_coverage": 25.0
         }
       },
       "all_time": {
         "lead2": {
-          "n": 6,
-          "mae": 4.5,
-          "mape": 97.8,
-          "accuracy": 2.2,
-          "baseline_mae": 1.9,
-          "band_coverage": 16.7
+          "n": 7,
+          "mae": 4.1,
+          "mape": 87.3,
+          "accuracy": 12.7,
+          "baseline_mae": 1.7,
+          "band_coverage": 28.6
         },
         "lead1": {
-          "n": 7,
-          "mae": 3.4,
-          "mape": 65.3,
-          "accuracy": 34.7,
-          "baseline_mae": 1.5,
-          "band_coverage": 14.3
+          "n": 8,
+          "mae": 3.0,
+          "mape": 58.6,
+          "accuracy": 41.4,
+          "baseline_mae": 1.4,
+          "band_coverage": 25.0
         }
       }
     }

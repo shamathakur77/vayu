@@ -1,154 +1,154 @@
 {
-  "generated_at": "2026-09-03T23:57:42Z",
-  "date_ist": "2026-09-04",
+  "generated_at": "2026-09-04T23:46:49Z",
+  "date_ist": "2026-09-05",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 38.0,
+        "pm25": 36.0,
         "source": "cpcb",
-        "last_update": "04-09-2026 04:00:00"
+        "last_update": "05-09-2026 04:00:00"
       },
       "today": {
-        "target_date": "2026-09-04",
-        "pm25": 50.3,
-        "lo": 31.6,
-        "hi": 69.2,
-        "aqi": 84,
+        "target_date": "2026-09-05",
+        "pm25": 42.9,
+        "lo": 27.7,
+        "hi": 67.3,
+        "aqi": 72,
         "category": "Satisfactory"
       },
       "tomorrow": {
-        "target_date": "2026-09-05",
-        "pm25": 45.4,
-        "lo": 21.6,
-        "hi": 52.4,
-        "aqi": 76,
+        "target_date": "2026-09-06",
+        "pm25": 49.0,
+        "lo": 38.6,
+        "hi": 84.4,
+        "aqi": 82,
         "category": "Satisfactory"
       },
       "yesterday": {
-        "target_date": "2026-09-03",
+        "target_date": "2026-09-04",
         "lead_days": 1,
-        "predicted": 50.4,
-        "actual": 29.1,
-        "pct_error": 73.2,
-        "in_band": false,
+        "predicted": 50.3,
+        "actual": 44.9,
+        "pct_error": 12.0,
+        "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "cpcb_official",
-        "text": "Official Indian AQI: 64 out of 500, category 'Satisfactory'. That is the government's own scale.",
-        "source_name": "CPCB, National Air Quality Index (PM2.5 breakpoints)",
-        "source_url": "https://cpcb.nic.in/displaypdf.php?id=bmF0aW9uYWwtYWlyLXF1YWxpdHktaW5kZXgvQWJvdXRfQVFJLnBkZg==",
-        "caveat": "Computed from PM2.5 alone. The full CPCB AQI takes the worst sub-index across pollutants, so the official city AQI can be higher on days another pollutant dominates."
+        "id": "who_deaths_global",
+        "text": "Outdoor air pollution causes about 4.2 million early deaths a year worldwide, says WHO. It is one of the biggest killers nobody posts about.",
+        "source_name": "WHO fact sheet, Ambient (outdoor) air quality and health (2019 estimate)",
+        "source_url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "caveat": "A modeled global estimate for 2019, the latest WHO headline figure, with uncertainty in the millions."
       }
     },
     "mumbai": {
       "name": "Mumbai",
       "now": {
-        "pm25": 18.0,
+        "pm25": 22.0,
         "source": "cpcb",
-        "last_update": "04-09-2026 04:00:00"
+        "last_update": "05-09-2026 04:00:00"
       },
       "yesterday": null,
       "comparison": {
-        "id": "cigarettes_week",
-        "text": "A week of air like this = 5.5 cigarettes. Your lungs are keeping the receipts.",
-        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
-        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
-        "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
+        "id": "archive_worst_season",
+        "text": "Worst day this season so far: 739 ug/m3 on 2026-06-08. Today is below that. Receipts in the repo.",
+        "source_name": "VAYU archive (this repository's observation files)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
       }
     },
     "pune": {
       "name": "Pune",
       "now": {
-        "pm25": 27.0,
+        "pm25": 31.0,
         "source": "cpcb",
-        "last_update": "04-09-2026 04:00:00"
+        "last_update": "05-09-2026 04:00:00"
       },
       "today": {
-        "target_date": "2026-09-04",
-        "pm25": 5.4,
-        "lo": 5.1,
-        "hi": 9.4,
-        "aqi": 9,
+        "target_date": "2026-09-05",
+        "pm25": 6.5,
+        "lo": 5.5,
+        "hi": 9.5,
+        "aqi": 11,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-05",
+        "target_date": "2026-09-06",
         "pm25": 5.0,
-        "lo": 4.9,
-        "hi": 9.3,
+        "lo": 4.7,
+        "hi": 9.4,
         "aqi": 8,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-09-03",
+        "target_date": "2026-09-04",
         "lead_days": 1,
-        "predicted": 4.5,
-        "actual": 6.1,
-        "pct_error": 26.2,
+        "predicted": 5.4,
+        "actual": 6.3,
+        "pct_error": 14.3,
         "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "who_daily_multiple",
-        "text": "That is 1.8x the WHO daily safe limit. The limit is 15. We are not close.",
-        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
-        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
-        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
-      }
-    },
-    "bengaluru": {
-      "name": "Bengaluru",
-      "now": {
-        "pm25": 27.0,
-        "source": "cpcb",
-        "last_update": "04-09-2026 04:00:00"
-      },
-      "yesterday": null,
-      "comparison": {
         "id": "archive_percentile",
-        "text": "Today's air is worse than 98 percent of days this season in Bengaluru. Ranked, logged, versioned.",
+        "text": "Today's air is worse than 100 percent of days this season in Pune. Ranked, logged, versioned.",
         "source_name": "VAYU archive (this repository's observation files)",
         "source_url": "https://github.com/shamathakur77/vayu",
         "caveat": "Season means the trailing 90 days of this project's own observations. Small archive early on means noisy percentiles, and the repo shows exactly how small."
       }
     },
+    "bengaluru": {
+      "name": "Bengaluru",
+      "now": {
+        "pm25": 24.0,
+        "source": "cpcb",
+        "last_update": "05-09-2026 04:00:00"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "cross_city",
+        "text": "Bengaluru today is 4.5x the air of Nashik, the cleanest city we track. Same country, different lungs.",
+        "source_name": "VAYU same-day observations (this repository)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Same-day comparison across the five tracked cities using the same measurement rule for each. Only shown when the ratio is at least 1.5."
+      }
+    },
     "nashik": {
       "name": "Nashik",
       "now": {
-        "pm25": 17.0,
+        "pm25": 20.0,
         "source": "cpcb",
-        "last_update": "04-09-2026 04:00:00"
+        "last_update": "05-09-2026 04:00:00"
       },
       "today": {
-        "target_date": "2026-09-04",
-        "pm25": 4.7,
+        "target_date": "2026-09-05",
+        "pm25": 6.8,
         "lo": 4.7,
-        "hi": 8.4,
-        "aqi": 8,
+        "hi": 8.5,
+        "aqi": 11,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-05",
-        "pm25": 7.3,
-        "lo": 6.1,
-        "hi": 8.6,
-        "aqi": 12,
+        "target_date": "2026-09-06",
+        "pm25": 6.1,
+        "lo": 4.4,
+        "hi": 9.1,
+        "aqi": 10,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-09-03",
+        "target_date": "2026-09-04",
         "lead_days": 1,
-        "predicted": 4.0,
-        "actual": 6.1,
-        "pct_error": 34.4,
+        "predicted": 4.7,
+        "actual": 5.3,
+        "pct_error": 11.3,
         "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
         "id": "cpcb_official",
-        "text": "Official Indian AQI: 28 out of 500, category 'Good'. That is the government's own scale.",
+        "text": "Official Indian AQI: 33 out of 500, category 'Good'. That is the government's own scale.",
         "source_name": "CPCB, National Air Quality Index (PM2.5 breakpoints)",
         "source_url": "https://cpcb.nic.in/displaypdf.php?id=bmF0aW9uYWwtYWlyLXF1YWxpdHktaW5kZXgvQWJvdXRfQVFJLnBkZg==",
         "caveat": "Computed from PM2.5 alone. The full CPCB AQI takes the worst sub-index across pollutants, so the official city AQI can be higher on days another pollutant dominates."
