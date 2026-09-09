@@ -1,37 +1,149 @@
 {
-  "generated_at": "2026-09-08T00:11:16Z",
-  "date_ist": "2026-09-08",
+  "generated_at": "2026-09-09T00:06:46Z",
+  "date_ist": "2026-09-09",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 71.0,
+        "pm25": 56.0,
         "source": "cpcb",
-        "last_update": "08-09-2026 05:00:00"
+        "last_update": "09-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-08",
-        "pm25": 75.2,
-        "lo": 50.7,
-        "hi": 104.5,
-        "aqi": 151,
+        "target_date": "2026-09-09",
+        "pm25": 78.4,
+        "lo": 47.2,
+        "hi": 94.6,
+        "aqi": 162,
         "category": "Moderate"
       },
       "tomorrow": {
-        "target_date": "2026-09-09",
-        "pm25": 82.8,
-        "lo": 50.6,
-        "hi": 107.2,
-        "aqi": 176,
+        "target_date": "2026-09-10",
+        "pm25": 78.2,
+        "lo": 49.2,
+        "hi": 97.4,
+        "aqi": 161,
         "category": "Moderate"
       },
       "yesterday": {
-        "target_date": "2026-09-07",
+        "target_date": "2026-09-08",
         "lead_days": 1,
-        "predicted": 59.3,
-        "actual": 73.9,
-        "pct_error": 19.8,
-        "in_band": false,
+        "predicted": 75.2,
+        "actual": 64.6,
+        "pct_error": 16.4,
+        "in_band": true,
+        "obs_source": "cams"
+      },
+      "comparison": {
+        "id": "kids_breathe_faster",
+        "text": "Kids breathe faster than adults, so they absorb more of this per kilo. They also live closer to the ground, where some pollutants peak. WHO's words, not ours.",
+        "source_name": "WHO, More than 90% of the world's children breathe toxic air every day (2018)",
+        "source_url": "https://www.who.int/news/item/29-10-2018-more-than-90-of-the-worlds-children-breathe-toxic-air-every-day",
+        "caveat": "Direct WHO statements: children 'breathe more rapidly than adults and so absorb more pollutants' and 'live closer to the ground, where some pollutants reach peak concentrations'."
+      }
+    },
+    "mumbai": {
+      "name": "Mumbai",
+      "now": {
+        "pm25": 16.0,
+        "source": "cpcb",
+        "last_update": "09-09-2026 05:00:00"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "cigarettes_week",
+        "text": "A week of air like this = 5 cigarettes. Your lungs are keeping the receipts.",
+        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
+        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
+        "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
+      }
+    },
+    "pune": {
+      "name": "Pune",
+      "now": {
+        "pm25": 33.0,
+        "source": "cpcb",
+        "last_update": "09-09-2026 05:00:00"
+      },
+      "today": {
+        "target_date": "2026-09-09",
+        "pm25": 15.3,
+        "lo": 7.0,
+        "hi": 18.2,
+        "aqi": 26,
+        "category": "Good"
+      },
+      "tomorrow": {
+        "target_date": "2026-09-10",
+        "pm25": 15.2,
+        "lo": 7.1,
+        "hi": 17.4,
+        "aqi": 25,
+        "category": "Good"
+      },
+      "yesterday": {
+        "target_date": "2026-09-08",
+        "lead_days": 1,
+        "predicted": 9.3,
+        "actual": 12.0,
+        "pct_error": 22.5,
+        "in_band": true,
+        "obs_source": "cams"
+      },
+      "comparison": {
+        "id": "who_daily_multiple",
+        "text": "That is 2.2x the WHO daily safe limit. The limit is 15. We are not close.",
+        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
+        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
+        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
+      }
+    },
+    "bengaluru": {
+      "name": "Bengaluru",
+      "now": {
+        "pm25": 34.5,
+        "source": "cpcb",
+        "last_update": "09-09-2026 05:00:00"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "who_annual_multiple",
+        "text": "If every day were like today, you would live at 7x the WHO annual safe level.",
+        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 annual average 5 ug/m3)",
+        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
+        "caveat": "Compares one day against an annual guideline, so it describes a hypothetical year of days like today, not your actual annual exposure."
+      }
+    },
+    "nashik": {
+      "name": "Nashik",
+      "now": {
+        "pm25": 26.5,
+        "source": "cpcb",
+        "last_update": "09-09-2026 05:00:00"
+      },
+      "today": {
+        "target_date": "2026-09-09",
+        "pm25": 10.8,
+        "lo": 10.2,
+        "hi": 12.5,
+        "aqi": 18,
+        "category": "Good"
+      },
+      "tomorrow": {
+        "target_date": "2026-09-10",
+        "pm25": 10.8,
+        "lo": 10.2,
+        "hi": 12.9,
+        "aqi": 18,
+        "category": "Good"
+      },
+      "yesterday": {
+        "target_date": "2026-09-08",
+        "lead_days": 1,
+        "predicted": 8.9,
+        "actual": 9.6,
+        "pct_error": 7.3,
+        "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
@@ -40,118 +152,6 @@
         "source_name": "CDC NIOSH, Proper N95 Respirator Use (Science Bulletin)",
         "source_url": "https://www.cdc.gov/niosh/bulletin/2020/n95-preparedness.html",
         "caveat": "The 95 percent is the certified filter performance with a proper seal. Beards, gaps and surgical masks do not deliver it."
-      }
-    },
-    "mumbai": {
-      "name": "Mumbai",
-      "now": {
-        "pm25": 21.5,
-        "source": "cpcb",
-        "last_update": "08-09-2026 05:00:00"
-      },
-      "yesterday": null,
-      "comparison": {
-        "id": "cigarettes_day",
-        "text": "Breathing Mumbai air today = smoking 1 cigarettes. No lighter needed.",
-        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence (Richard A. Muller and Elizabeth A. Muller)",
-        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
-        "caveat": "A rule of thumb comparing health effects, not identical smoke. The authors call it a rough estimate, and unlike smoking, polluted air is breathed by everyone including kids."
-      }
-    },
-    "pune": {
-      "name": "Pune",
-      "now": {
-        "pm25": 28.0,
-        "source": "cpcb",
-        "last_update": "08-09-2026 05:00:00"
-      },
-      "today": {
-        "target_date": "2026-09-08",
-        "pm25": 9.3,
-        "lo": 7.7,
-        "hi": 12.0,
-        "aqi": 15,
-        "category": "Good"
-      },
-      "tomorrow": {
-        "target_date": "2026-09-09",
-        "pm25": 8.3,
-        "lo": 5.7,
-        "hi": 11.8,
-        "aqi": 14,
-        "category": "Good"
-      },
-      "yesterday": {
-        "target_date": "2026-09-07",
-        "lead_days": 1,
-        "predicted": 6.6,
-        "actual": 9.2,
-        "pct_error": 28.3,
-        "in_band": false,
-        "obs_source": "cams"
-      },
-      "comparison": {
-        "id": "cigarettes_week",
-        "text": "A week of air like this = 9 cigarettes. Your lungs are keeping the receipts.",
-        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
-        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
-        "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
-      }
-    },
-    "bengaluru": {
-      "name": "Bengaluru",
-      "now": {
-        "pm25": 13.2,
-        "source": "latest daily (cams)",
-        "last_update": "2026-09-07"
-      },
-      "yesterday": null,
-      "comparison": {
-        "id": "cigarettes_week",
-        "text": "A week of air like this = 4 cigarettes. Your lungs are keeping the receipts.",
-        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
-        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
-        "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
-      }
-    },
-    "nashik": {
-      "name": "Nashik",
-      "now": {
-        "pm25": 22.5,
-        "source": "cpcb",
-        "last_update": "08-09-2026 05:00:00"
-      },
-      "today": {
-        "target_date": "2026-09-08",
-        "pm25": 8.9,
-        "lo": 7.2,
-        "hi": 13.4,
-        "aqi": 15,
-        "category": "Good"
-      },
-      "tomorrow": {
-        "target_date": "2026-09-09",
-        "pm25": 9.3,
-        "lo": 7.3,
-        "hi": 13.6,
-        "aqi": 15,
-        "category": "Good"
-      },
-      "yesterday": {
-        "target_date": "2026-09-07",
-        "lead_days": 1,
-        "predicted": 8.0,
-        "actual": 9.0,
-        "pct_error": 11.1,
-        "in_band": true,
-        "obs_source": "cams"
-      },
-      "comparison": {
-        "id": "loni_rank",
-        "text": "The most polluted city on Earth in the 2025 IQAir report is Loni, in Delhi NCR: 112.5 ug/m3 average, 22x the WHO limit. All 25 worst cities were in India, Pakistan and China.",
-        "source_name": "IQAir, 2025 World Air Quality Report press release",
-        "source_url": "https://www.iqair.com/newsroom/waqr-2025-pr",
-        "caveat": "IQAir rankings blend government and low-cost sensor data and only cover cities that measure at all. Plenty of unmonitored places never make the list."
       }
     }
   }
