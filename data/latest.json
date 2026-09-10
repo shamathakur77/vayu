@@ -1,111 +1,95 @@
 {
-  "generated_at": "2026-09-09T23:55:36Z",
-  "date_ist": "2026-09-10",
+  "generated_at": "2026-09-10T23:51:30Z",
+  "date_ist": "2026-09-11",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 58.0,
+        "pm25": 59.0,
         "source": "cpcb",
-        "last_update": "10-09-2026 04:00:00"
+        "last_update": "11-09-2026 04:00:00"
       },
       "today": {
-        "target_date": "2026-09-10",
-        "pm25": 89.7,
-        "lo": 57.8,
-        "hi": 111.4,
-        "aqi": 199,
+        "target_date": "2026-09-11",
+        "pm25": 61.9,
+        "lo": 45.6,
+        "hi": 101.8,
+        "aqi": 107,
         "category": "Moderate"
       },
       "tomorrow": {
-        "target_date": "2026-09-11",
-        "pm25": 62.7,
-        "lo": 44.1,
-        "hi": 105.0,
-        "aqi": 110,
-        "category": "Moderate"
+        "target_date": "2026-09-12",
+        "pm25": 51.0,
+        "lo": 43.1,
+        "hi": 86.3,
+        "aqi": 85,
+        "category": "Satisfactory"
       },
       "yesterday": {
-        "target_date": "2026-09-09",
+        "target_date": "2026-09-10",
         "lead_days": 1,
-        "predicted": 78.4,
-        "actual": 74.4,
-        "pct_error": 5.4,
+        "predicted": 89.7,
+        "actual": 75.1,
+        "pct_error": 19.4,
         "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "archive_worst_season",
-        "text": "Worst day this season so far: 115 ug/m3 on 2026-08-29. Today is below that. Receipts in the repo.",
+        "id": "archive_percentile",
+        "text": "Today's air is worse than 76 percent of days this season in Delhi. Ranked, logged, versioned.",
         "source_name": "VAYU archive (this repository's observation files)",
         "source_url": "https://github.com/shamathakur77/vayu",
-        "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
+        "caveat": "Season means the trailing 90 days of this project's own observations. Small archive early on means noisy percentiles, and the repo shows exactly how small."
       }
     },
     "mumbai": {
       "name": "Mumbai",
       "now": {
-        "pm25": 20.0,
+        "pm25": 22.0,
         "source": "cpcb",
-        "last_update": "10-09-2026 04:00:00"
+        "last_update": "11-09-2026 04:00:00"
       },
       "yesterday": null,
       "comparison": {
-        "id": "who_daily_multiple",
-        "text": "That is 1.3x the WHO daily safe limit. The limit is 15. We are not close.",
-        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
-        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
-        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
-      }
-    },
-    "pune": {
-      "name": "Pune",
-      "now": {
-        "pm25": 32.0,
-        "source": "cpcb",
-        "last_update": "10-09-2026 04:00:00"
-      },
-      "today": {
-        "target_date": "2026-09-10",
-        "pm25": 16.0,
-        "lo": 12.4,
-        "hi": 18.1,
-        "aqi": 27,
-        "category": "Good"
-      },
-      "tomorrow": {
-        "target_date": "2026-09-11",
-        "pm25": 17.5,
-        "lo": 12.8,
-        "hi": 22.0,
-        "aqi": 29,
-        "category": "Good"
-      },
-      "yesterday": {
-        "target_date": "2026-09-09",
-        "lead_days": 1,
-        "predicted": 15.3,
-        "actual": 15.0,
-        "pct_error": 2.0,
-        "in_band": true,
-        "obs_source": "cams"
-      },
-      "comparison": {
         "id": "who_annual_multiple",
-        "text": "If every day were like today, you would live at 6.5x the WHO annual safe level.",
+        "text": "If every day were like today, you would live at 4.5x the WHO annual safe level.",
         "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 annual average 5 ug/m3)",
         "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
         "caveat": "Compares one day against an annual guideline, so it describes a hypothetical year of days like today, not your actual annual exposure."
       }
     },
-    "bengaluru": {
-      "name": "Bengaluru",
+    "pune": {
+      "name": "Pune",
       "now": {
         "pm25": 37.0,
         "source": "cpcb",
-        "last_update": "10-09-2026 04:00:00"
+        "last_update": "11-09-2026 04:00:00"
       },
-      "yesterday": null,
+      "today": {
+        "target_date": "2026-09-11",
+        "pm25": 16.6,
+        "lo": 13.6,
+        "hi": 19.8,
+        "aqi": 28,
+        "category": "Good"
+      },
+      "tomorrow": {
+        "target_date": "2026-09-12",
+        "pm25": 13.6,
+        "lo": 11.3,
+        "hi": 17.2,
+        "aqi": 23,
+        "category": "Good"
+      },
+      "yesterday": {
+        "target_date": "2026-09-10",
+        "lead_days": 1,
+        "predicted": 16.0,
+        "actual": 14.7,
+        "pct_error": 8.8,
+        "in_band": true,
+        "obs_source": "cams"
+      },
       "comparison": {
         "id": "cigarettes_week",
         "text": "A week of air like this = 12 cigarettes. Your lungs are keeping the receipts.",
@@ -114,44 +98,60 @@
         "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
       }
     },
+    "bengaluru": {
+      "name": "Bengaluru",
+      "now": {
+        "pm25": 38.0,
+        "source": "cpcb",
+        "last_update": "11-09-2026 04:00:00"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "who_daily_multiple",
+        "text": "That is 2.5x the WHO daily safe limit. The limit is 15. We are not close.",
+        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
+        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
+        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
+      }
+    },
     "nashik": {
       "name": "Nashik",
       "now": {
-        "pm25": 23.5,
+        "pm25": 30.0,
         "source": "cpcb",
-        "last_update": "10-09-2026 04:00:00"
+        "last_update": "11-09-2026 04:00:00"
       },
       "today": {
-        "target_date": "2026-09-10",
-        "pm25": 11.8,
+        "target_date": "2026-09-11",
+        "pm25": 9.2,
         "lo": 8.8,
-        "hi": 13.1,
-        "aqi": 20,
+        "hi": 12.3,
+        "aqi": 15,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-11",
-        "pm25": 11.5,
-        "lo": 8.9,
-        "hi": 13.6,
-        "aqi": 19,
+        "target_date": "2026-09-12",
+        "pm25": 7.3,
+        "lo": 5.0,
+        "hi": 10.3,
+        "aqi": 12,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-09-09",
+        "target_date": "2026-09-10",
         "lead_days": 1,
-        "predicted": 10.8,
-        "actual": 9.0,
-        "pct_error": 20.0,
+        "predicted": 11.8,
+        "actual": 7.6,
+        "pct_error": 55.3,
         "in_band": false,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "kids_breathe_faster",
-        "text": "Kids breathe faster than adults, so they absorb more of this per kilo. They also live closer to the ground, where some pollutants peak. WHO's words, not ours.",
-        "source_name": "WHO, More than 90% of the world's children breathe toxic air every day (2018)",
-        "source_url": "https://www.who.int/news/item/29-10-2018-more-than-90-of-the-worlds-children-breathe-toxic-air-every-day",
-        "caveat": "Direct WHO statements: children 'breathe more rapidly than adults and so absorb more pollutants' and 'live closer to the ground, where some pollutants reach peak concentrations'."
+        "id": "archive_worst_season",
+        "text": "Worst day this season so far: 26 ug/m3 on 2026-07-29. Today is close to that. Receipts in the repo.",
+        "source_name": "VAYU archive (this repository's observation files)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
       }
     }
   }
