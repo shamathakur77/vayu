@@ -1,157 +1,157 @@
 {
-  "generated_at": "2026-09-10T23:51:30Z",
-  "date_ist": "2026-09-11",
+  "generated_at": "2026-09-12T23:47:19Z",
+  "date_ist": "2026-09-13",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 59.0,
+        "pm25": 48.0,
         "source": "cpcb",
-        "last_update": "11-09-2026 04:00:00"
+        "last_update": "13-09-2026 04:00:00"
       },
       "today": {
-        "target_date": "2026-09-11",
-        "pm25": 61.9,
-        "lo": 45.6,
-        "hi": 101.8,
-        "aqi": 107,
-        "category": "Moderate"
+        "target_date": "2026-09-13",
+        "pm25": 31.4,
+        "lo": 23.8,
+        "hi": 36.8,
+        "aqi": 53,
+        "category": "Satisfactory"
       },
       "tomorrow": {
-        "target_date": "2026-09-12",
-        "pm25": 51.0,
-        "lo": 43.1,
-        "hi": 86.3,
-        "aqi": 85,
+        "target_date": "2026-09-14",
+        "pm25": 31.4,
+        "lo": 20.9,
+        "hi": 42.4,
+        "aqi": 53,
         "category": "Satisfactory"
       },
       "yesterday": {
-        "target_date": "2026-09-10",
-        "lead_days": 1,
-        "predicted": 89.7,
-        "actual": 75.1,
-        "pct_error": 19.4,
-        "in_band": true,
+        "target_date": "2026-09-12",
+        "lead_days": 2,
+        "predicted": 51.0,
+        "actual": 24.4,
+        "pct_error": 109.0,
+        "in_band": false,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "archive_percentile",
-        "text": "Today's air is worse than 76 percent of days this season in Delhi. Ranked, logged, versioned.",
-        "source_name": "VAYU archive (this repository's observation files)",
-        "source_url": "https://github.com/shamathakur77/vayu",
-        "caveat": "Season means the trailing 90 days of this project's own observations. Small archive early on means noisy percentiles, and the repo shows exactly how small."
+        "id": "cigarettes_day",
+        "text": "Breathing Delhi air today = smoking 2.2 cigarettes. No lighter needed.",
+        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence (Richard A. Muller and Elizabeth A. Muller)",
+        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
+        "caveat": "A rule of thumb comparing health effects, not identical smoke. The authors call it a rough estimate, and unlike smoking, polluted air is breathed by everyone including kids."
       }
     },
     "mumbai": {
       "name": "Mumbai",
       "now": {
-        "pm25": 22.0,
+        "pm25": 21.0,
         "source": "cpcb",
-        "last_update": "11-09-2026 04:00:00"
+        "last_update": "13-09-2026 04:00:00"
       },
       "yesterday": null,
       "comparison": {
-        "id": "who_annual_multiple",
-        "text": "If every day were like today, you would live at 4.5x the WHO annual safe level.",
-        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 annual average 5 ug/m3)",
-        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
-        "caveat": "Compares one day against an annual guideline, so it describes a hypothetical year of days like today, not your actual annual exposure."
+        "id": "cpcb_official",
+        "text": "Official Indian AQI: 35 out of 500, category 'Good'. That is the government's own scale.",
+        "source_name": "CPCB, National Air Quality Index (PM2.5 breakpoints)",
+        "source_url": "https://cpcb.nic.in/displaypdf.php?id=bmF0aW9uYWwtYWlyLXF1YWxpdHktaW5kZXgvQWJvdXRfQVFJLnBkZg==",
+        "caveat": "Computed from PM2.5 alone. The full CPCB AQI takes the worst sub-index across pollutants, so the official city AQI can be higher on days another pollutant dominates."
       }
     },
     "pune": {
       "name": "Pune",
       "now": {
-        "pm25": 37.0,
+        "pm25": 34.0,
         "source": "cpcb",
-        "last_update": "11-09-2026 04:00:00"
+        "last_update": "13-09-2026 04:00:00"
       },
       "today": {
-        "target_date": "2026-09-11",
-        "pm25": 16.6,
-        "lo": 13.6,
-        "hi": 19.8,
-        "aqi": 28,
+        "target_date": "2026-09-13",
+        "pm25": 14.5,
+        "lo": 8.0,
+        "hi": 18.7,
+        "aqi": 24,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-12",
-        "pm25": 13.6,
-        "lo": 11.3,
-        "hi": 17.2,
-        "aqi": 23,
+        "target_date": "2026-09-14",
+        "pm25": 13.2,
+        "lo": 9.1,
+        "hi": 19.3,
+        "aqi": 22,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-09-10",
-        "lead_days": 1,
-        "predicted": 16.0,
-        "actual": 14.7,
-        "pct_error": 8.8,
+        "target_date": "2026-09-12",
+        "lead_days": 2,
+        "predicted": 13.6,
+        "actual": 12.1,
+        "pct_error": 12.4,
         "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "cigarettes_week",
-        "text": "A week of air like this = 12 cigarettes. Your lungs are keeping the receipts.",
-        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
-        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
-        "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
+        "id": "who_deaths_global",
+        "text": "Outdoor air pollution causes about 4.2 million early deaths a year worldwide, says WHO. It is one of the biggest killers nobody posts about.",
+        "source_name": "WHO fact sheet, Ambient (outdoor) air quality and health (2019 estimate)",
+        "source_url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "caveat": "A modeled global estimate for 2019, the latest WHO headline figure, with uncertainty in the millions."
       }
     },
     "bengaluru": {
       "name": "Bengaluru",
       "now": {
-        "pm25": 38.0,
+        "pm25": 44.0,
         "source": "cpcb",
-        "last_update": "11-09-2026 04:00:00"
+        "last_update": "13-09-2026 04:00:00"
       },
       "yesterday": null,
       "comparison": {
-        "id": "who_daily_multiple",
-        "text": "That is 2.5x the WHO daily safe limit. The limit is 15. We are not close.",
-        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
-        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
-        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
+        "id": "aqli_life_years",
+        "text": "Live with this air permanently and it prices out at about 4 years of life expectancy. That is the math, not a mood.",
+        "source_name": "AQLI methodology (Ebenstein et al. 2017), University of Chicago EPIC",
+        "source_url": "https://aqli.epic.uchicago.edu/about/methodology",
+        "caveat": "The AQLI conversion (0.98 years per 10 ug/m3) applies to sustained lifetime exposure, so this is what today's level would cost if it were your permanent normal, not the cost of one bad day."
       }
     },
     "nashik": {
       "name": "Nashik",
       "now": {
-        "pm25": 30.0,
+        "pm25": 23.5,
         "source": "cpcb",
-        "last_update": "11-09-2026 04:00:00"
+        "last_update": "13-09-2026 04:00:00"
       },
       "today": {
-        "target_date": "2026-09-11",
-        "pm25": 9.2,
-        "lo": 8.8,
-        "hi": 12.3,
-        "aqi": 15,
+        "target_date": "2026-09-13",
+        "pm25": 4.5,
+        "lo": 3.7,
+        "hi": 5.5,
+        "aqi": 7,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-12",
-        "pm25": 7.3,
-        "lo": 5.0,
-        "hi": 10.3,
-        "aqi": 12,
+        "target_date": "2026-09-14",
+        "pm25": 4.6,
+        "lo": 4.3,
+        "hi": 7.1,
+        "aqi": 8,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-09-10",
-        "lead_days": 1,
-        "predicted": 11.8,
-        "actual": 7.6,
-        "pct_error": 55.3,
-        "in_band": false,
+        "target_date": "2026-09-12",
+        "lead_days": 2,
+        "predicted": 7.3,
+        "actual": 6.4,
+        "pct_error": 14.1,
+        "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "archive_worst_season",
-        "text": "Worst day this season so far: 26 ug/m3 on 2026-07-29. Today is close to that. Receipts in the repo.",
-        "source_name": "VAYU archive (this repository's observation files)",
-        "source_url": "https://github.com/shamathakur77/vayu",
-        "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
+        "id": "cigarettes_day",
+        "text": "Breathing Nashik air today = smoking 1.1 cigarettes. No lighter needed.",
+        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence (Richard A. Muller and Elizabeth A. Muller)",
+        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
+        "caveat": "A rule of thumb comparing health effects, not identical smoke. The authors call it a rough estimate, and unlike smoking, polluted air is breathed by everyone including kids."
       }
     }
   }
