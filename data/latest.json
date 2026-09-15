@@ -1,53 +1,53 @@
 {
-  "generated_at": "2026-09-13T23:56:43Z",
-  "date_ist": "2026-09-14",
+  "generated_at": "2026-09-15T00:26:23Z",
+  "date_ist": "2026-09-15",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 46.5,
+        "pm25": 70.0,
         "source": "cpcb",
-        "last_update": "14-09-2026 04:00:00"
+        "last_update": "15-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-14",
-        "pm25": 33.0,
-        "lo": 27.5,
-        "hi": 39.2,
-        "aqi": 56,
+        "target_date": "2026-09-15",
+        "pm25": 45.3,
+        "lo": 32.9,
+        "hi": 57.9,
+        "aqi": 76,
         "category": "Satisfactory"
       },
       "tomorrow": {
-        "target_date": "2026-09-15",
-        "pm25": 42.8,
-        "lo": 29.1,
-        "hi": 60.9,
-        "aqi": 72,
+        "target_date": "2026-09-16",
+        "pm25": 49.8,
+        "lo": 38.9,
+        "hi": 69.7,
+        "aqi": 83,
         "category": "Satisfactory"
       },
       "yesterday": {
-        "target_date": "2026-09-13",
+        "target_date": "2026-09-14",
         "lead_days": 1,
-        "predicted": 31.4,
-        "actual": 27.7,
-        "pct_error": 13.4,
+        "predicted": 33.0,
+        "actual": 31.0,
+        "pct_error": 6.5,
         "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "cigarettes_week",
-        "text": "A week of air like this = 15 cigarettes. Your lungs are keeping the receipts.",
-        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
-        "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
-        "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
+        "id": "who_daily_multiple",
+        "text": "That is 4.5x the WHO daily safe limit. The limit is 15. We are not close.",
+        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
+        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
+        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
       }
     },
     "mumbai": {
       "name": "Mumbai",
       "now": {
-        "pm25": 17.5,
+        "pm25": 23.0,
         "source": "cpcb",
-        "last_update": "14-09-2026 04:00:00"
+        "last_update": "15-09-2026 05:00:00"
       },
       "yesterday": null,
       "comparison": {
@@ -61,97 +61,97 @@
     "pune": {
       "name": "Pune",
       "now": {
-        "pm25": 30.0,
+        "pm25": 29.0,
         "source": "cpcb",
-        "last_update": "14-09-2026 04:00:00"
+        "last_update": "15-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-14",
-        "pm25": 8.7,
-        "lo": 4.9,
-        "hi": 17.7,
-        "aqi": 14,
+        "target_date": "2026-09-15",
+        "pm25": 10.4,
+        "lo": 5.9,
+        "hi": 12.8,
+        "aqi": 17,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-15",
-        "pm25": 11.9,
-        "lo": 5.1,
-        "hi": 20.1,
-        "aqi": 20,
+        "target_date": "2026-09-16",
+        "pm25": 9.9,
+        "lo": 6.2,
+        "hi": 15.1,
+        "aqi": 17,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-09-13",
+        "target_date": "2026-09-14",
         "lead_days": 1,
-        "predicted": 14.5,
-        "actual": 5.2,
-        "pct_error": 178.8,
-        "in_band": false,
+        "predicted": 8.7,
+        "actual": 5.5,
+        "pct_error": 58.2,
+        "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "heart_not_lungs",
-        "text": "Plot twist: 68 percent of outdoor air pollution deaths are heart disease and stroke. It was never just about your lungs.",
-        "source_name": "WHO fact sheet, Ambient (outdoor) air quality and health",
-        "source_url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
-        "caveat": "WHO's breakdown of premature deaths linked to outdoor air pollution: 68 percent ischaemic heart disease and stroke, 14 percent COPD, 14 percent acute lower respiratory infection, 4 percent lung cancer."
+        "id": "loni_rank",
+        "text": "The most polluted city on Earth in the 2025 IQAir report is Loni, in Delhi NCR: 112.5 ug/m3 average, 22x the WHO limit. All 25 worst cities were in India, Pakistan and China.",
+        "source_name": "IQAir, 2025 World Air Quality Report press release",
+        "source_url": "https://www.iqair.com/newsroom/waqr-2025-pr",
+        "caveat": "IQAir rankings blend government and low-cost sensor data and only cover cities that measure at all. Plenty of unmonitored places never make the list."
       }
     },
     "bengaluru": {
       "name": "Bengaluru",
       "now": {
-        "pm25": 42.5,
+        "pm25": 37.0,
         "source": "cpcb",
-        "last_update": "14-09-2026 04:00:00"
+        "last_update": "15-09-2026 05:00:00"
       },
       "yesterday": null,
       "comparison": {
-        "id": "epa_translation",
-        "text": "In the US, today's air would be officially rated 'Unhealthy for Sensitive Groups'. Here it is called Tuesday.",
-        "source_name": "US EPA, Technical Assistance Document for the Reporting of Daily Air Quality (AirNow, 2024 breakpoints)",
-        "source_url": "https://document.airnow.gov/technical-assistance-document-for-the-reporting-of-daily-air-quailty.pdf",
-        "caveat": "US categories use the same pollutant with stricter cut points than India's AQI, which is why the same air sounds scarier in American."
+        "id": "cpcb_official",
+        "text": "Official Indian AQI: 62 out of 500, category 'Satisfactory'. That is the government's own scale.",
+        "source_name": "CPCB, National Air Quality Index (PM2.5 breakpoints)",
+        "source_url": "https://cpcb.nic.in/displaypdf.php?id=bmF0aW9uYWwtYWlyLXF1YWxpdHktaW5kZXgvQWJvdXRfQVFJLnBkZg==",
+        "caveat": "Computed from PM2.5 alone. The full CPCB AQI takes the worst sub-index across pollutants, so the official city AQI can be higher on days another pollutant dominates."
       }
     },
     "nashik": {
       "name": "Nashik",
       "now": {
-        "pm25": 15.0,
+        "pm25": 19.0,
         "source": "cpcb",
-        "last_update": "14-09-2026 04:00:00"
+        "last_update": "15-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-14",
-        "pm25": 4.2,
-        "lo": 3.5,
-        "hi": 7.4,
-        "aqi": 7,
-        "category": "Good"
-      },
-      "tomorrow": {
         "target_date": "2026-09-15",
-        "pm25": 5.6,
-        "lo": 5.4,
-        "hi": 9.1,
+        "pm25": 5.3,
+        "lo": 4.2,
+        "hi": 7.7,
         "aqi": 9,
         "category": "Good"
       },
+      "tomorrow": {
+        "target_date": "2026-09-16",
+        "pm25": 7.2,
+        "lo": 6.9,
+        "hi": 9.6,
+        "aqi": 12,
+        "category": "Good"
+      },
       "yesterday": {
-        "target_date": "2026-09-13",
+        "target_date": "2026-09-14",
         "lead_days": 1,
-        "predicted": 4.5,
-        "actual": 3.5,
-        "pct_error": 28.6,
-        "in_band": false,
+        "predicted": 4.2,
+        "actual": 3.6,
+        "pct_error": 16.7,
+        "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "kids_breathe_faster",
-        "text": "Kids breathe faster than adults, so they absorb more of this per kilo. They also live closer to the ground, where some pollutants peak. WHO's words, not ours.",
-        "source_name": "WHO, More than 90% of the world's children breathe toxic air every day (2018)",
-        "source_url": "https://www.who.int/news/item/29-10-2018-more-than-90-of-the-worlds-children-breathe-toxic-air-every-day",
-        "caveat": "Direct WHO statements: children 'breathe more rapidly than adults and so absorb more pollutants' and 'live closer to the ground, where some pollutants reach peak concentrations'."
+        "id": "who_daily_multiple",
+        "text": "That is 1.3x the WHO daily safe limit. The limit is 15. We are not close.",
+        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
+        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
+        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
       }
     }
   }
