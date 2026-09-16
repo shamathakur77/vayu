@@ -1,95 +1,55 @@
 {
-  "generated_at": "2026-09-15T00:26:23Z",
-  "date_ist": "2026-09-15",
+  "generated_at": "2026-09-16T00:08:33Z",
+  "date_ist": "2026-09-16",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 70.0,
+        "pm25": 68.0,
         "source": "cpcb",
-        "last_update": "15-09-2026 05:00:00"
+        "last_update": "16-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-15",
-        "pm25": 45.3,
-        "lo": 32.9,
-        "hi": 57.9,
-        "aqi": 76,
-        "category": "Satisfactory"
+        "target_date": "2026-09-16",
+        "pm25": 73.6,
+        "lo": 55.9,
+        "hi": 91.8,
+        "aqi": 146,
+        "category": "Moderate"
       },
       "tomorrow": {
-        "target_date": "2026-09-16",
-        "pm25": 49.8,
-        "lo": 38.9,
-        "hi": 69.7,
-        "aqi": 83,
-        "category": "Satisfactory"
+        "target_date": "2026-09-17",
+        "pm25": 64.4,
+        "lo": 45.5,
+        "hi": 86.7,
+        "aqi": 115,
+        "category": "Moderate"
       },
       "yesterday": {
-        "target_date": "2026-09-14",
+        "target_date": "2026-09-15",
         "lead_days": 1,
-        "predicted": 33.0,
-        "actual": 31.0,
-        "pct_error": 6.5,
+        "predicted": 45.3,
+        "actual": 51.5,
+        "pct_error": 12.0,
         "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "who_daily_multiple",
-        "text": "That is 4.5x the WHO daily safe limit. The limit is 15. We are not close.",
-        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
+        "id": "who_annual_multiple",
+        "text": "If every day were like today, you would live at 14x the WHO annual safe level.",
+        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 annual average 5 ug/m3)",
         "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
-        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
+        "caveat": "Compares one day against an annual guideline, so it describes a hypothetical year of days like today, not your actual annual exposure."
       }
     },
     "mumbai": {
       "name": "Mumbai",
       "now": {
-        "pm25": 23.0,
+        "pm25": 19.5,
         "source": "cpcb",
-        "last_update": "15-09-2026 05:00:00"
+        "last_update": "16-09-2026 05:00:00"
       },
       "yesterday": null,
-      "comparison": {
-        "id": "heart_not_lungs",
-        "text": "Plot twist: 68 percent of outdoor air pollution deaths are heart disease and stroke. It was never just about your lungs.",
-        "source_name": "WHO fact sheet, Ambient (outdoor) air quality and health",
-        "source_url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
-        "caveat": "WHO's breakdown of premature deaths linked to outdoor air pollution: 68 percent ischaemic heart disease and stroke, 14 percent COPD, 14 percent acute lower respiratory infection, 4 percent lung cancer."
-      }
-    },
-    "pune": {
-      "name": "Pune",
-      "now": {
-        "pm25": 29.0,
-        "source": "cpcb",
-        "last_update": "15-09-2026 05:00:00"
-      },
-      "today": {
-        "target_date": "2026-09-15",
-        "pm25": 10.4,
-        "lo": 5.9,
-        "hi": 12.8,
-        "aqi": 17,
-        "category": "Good"
-      },
-      "tomorrow": {
-        "target_date": "2026-09-16",
-        "pm25": 9.9,
-        "lo": 6.2,
-        "hi": 15.1,
-        "aqi": 17,
-        "category": "Good"
-      },
-      "yesterday": {
-        "target_date": "2026-09-14",
-        "lead_days": 1,
-        "predicted": 8.7,
-        "actual": 5.5,
-        "pct_error": 58.2,
-        "in_band": true,
-        "obs_source": "cams"
-      },
       "comparison": {
         "id": "loni_rank",
         "text": "The most polluted city on Earth in the 2025 IQAir report is Loni, in Delhi NCR: 112.5 ug/m3 average, 22x the WHO limit. All 25 worst cities were in India, Pakistan and China.",
@@ -98,60 +58,100 @@
         "caveat": "IQAir rankings blend government and low-cost sensor data and only cover cities that measure at all. Plenty of unmonitored places never make the list."
       }
     },
+    "pune": {
+      "name": "Pune",
+      "now": {
+        "pm25": 24.0,
+        "source": "cpcb",
+        "last_update": "16-09-2026 05:00:00"
+      },
+      "today": {
+        "target_date": "2026-09-16",
+        "pm25": 10.6,
+        "lo": 7.0,
+        "hi": 11.5,
+        "aqi": 18,
+        "category": "Good"
+      },
+      "tomorrow": {
+        "target_date": "2026-09-17",
+        "pm25": 9.2,
+        "lo": 7.6,
+        "hi": 10.8,
+        "aqi": 15,
+        "category": "Good"
+      },
+      "yesterday": {
+        "target_date": "2026-09-15",
+        "lead_days": 1,
+        "predicted": 10.4,
+        "actual": 6.8,
+        "pct_error": 52.9,
+        "in_band": true,
+        "obs_source": "cams"
+      },
+      "comparison": {
+        "id": "n95_works",
+        "text": "A NIOSH N95 removes at least 95 percent of airborne particles when it seals to your face. On days like this, it is not paranoia, it is arithmetic.",
+        "source_name": "CDC NIOSH, Proper N95 Respirator Use (Science Bulletin)",
+        "source_url": "https://www.cdc.gov/niosh/bulletin/2020/n95-preparedness.html",
+        "caveat": "The 95 percent is the certified filter performance with a proper seal. Beards, gaps and surgical masks do not deliver it."
+      }
+    },
     "bengaluru": {
       "name": "Bengaluru",
       "now": {
-        "pm25": 37.0,
+        "pm25": 31.0,
         "source": "cpcb",
-        "last_update": "15-09-2026 05:00:00"
+        "last_update": "16-09-2026 05:00:00"
       },
       "yesterday": null,
       "comparison": {
-        "id": "cpcb_official",
-        "text": "Official Indian AQI: 62 out of 500, category 'Satisfactory'. That is the government's own scale.",
-        "source_name": "CPCB, National Air Quality Index (PM2.5 breakpoints)",
-        "source_url": "https://cpcb.nic.in/displaypdf.php?id=bmF0aW9uYWwtYWlyLXF1YWxpdHktaW5kZXgvQWJvdXRfQVFJLnBkZg==",
-        "caveat": "Computed from PM2.5 alone. The full CPCB AQI takes the worst sub-index across pollutants, so the official city AQI can be higher on days another pollutant dominates."
+        "id": "kids_breathe_faster",
+        "text": "Kids breathe faster than adults, so they absorb more of this per kilo. They also live closer to the ground, where some pollutants peak. WHO's words, not ours.",
+        "source_name": "WHO, More than 90% of the world's children breathe toxic air every day (2018)",
+        "source_url": "https://www.who.int/news/item/29-10-2018-more-than-90-of-the-worlds-children-breathe-toxic-air-every-day",
+        "caveat": "Direct WHO statements: children 'breathe more rapidly than adults and so absorb more pollutants' and 'live closer to the ground, where some pollutants reach peak concentrations'."
       }
     },
     "nashik": {
       "name": "Nashik",
       "now": {
-        "pm25": 19.0,
+        "pm25": 26.0,
         "source": "cpcb",
-        "last_update": "15-09-2026 05:00:00"
+        "last_update": "16-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-15",
-        "pm25": 5.3,
-        "lo": 4.2,
-        "hi": 7.7,
-        "aqi": 9,
-        "category": "Good"
-      },
-      "tomorrow": {
         "target_date": "2026-09-16",
         "pm25": 7.2,
-        "lo": 6.9,
-        "hi": 9.6,
+        "lo": 7.0,
+        "hi": 8.9,
         "aqi": 12,
         "category": "Good"
       },
+      "tomorrow": {
+        "target_date": "2026-09-17",
+        "pm25": 6.8,
+        "lo": 6.8,
+        "hi": 7.8,
+        "aqi": 11,
+        "category": "Good"
+      },
       "yesterday": {
-        "target_date": "2026-09-14",
+        "target_date": "2026-09-15",
         "lead_days": 1,
-        "predicted": 4.2,
-        "actual": 3.6,
-        "pct_error": 16.7,
+        "predicted": 5.3,
+        "actual": 6.1,
+        "pct_error": 13.1,
         "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "who_daily_multiple",
-        "text": "That is 1.3x the WHO daily safe limit. The limit is 15. We are not close.",
-        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
+        "id": "who_annual_multiple",
+        "text": "If every day were like today, you would live at 5x the WHO annual safe level.",
+        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 annual average 5 ug/m3)",
         "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
-        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
+        "caveat": "Compares one day against an annual guideline, so it describes a hypothetical year of days like today, not your actual annual exposure."
       }
     }
   }
