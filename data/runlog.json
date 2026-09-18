@@ -1,5 +1,5 @@
 {
-  "finished_at": "2026-09-17T00:15:35Z",
+  "finished_at": "2026-09-18T00:10:38Z",
   "errors": [
     "mumbai: forecast crashed: window shape cannot be larger than input array shape",
     "bengaluru: forecast crashed: window shape cannot be larger than input array shape"
