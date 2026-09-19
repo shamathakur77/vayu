@@ -1,157 +1,157 @@
 {
-  "generated_at": "2026-09-18T00:10:30Z",
-  "date_ist": "2026-09-18",
+  "generated_at": "2026-09-19T00:01:30Z",
+  "date_ist": "2026-09-19",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 57.0,
+        "pm25": 57.5,
         "source": "cpcb",
-        "last_update": "18-09-2026 05:00:00"
+        "last_update": "19-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-18",
-        "pm25": 73.5,
-        "lo": 51.0,
-        "hi": 94.0,
-        "aqi": 146,
-        "category": "Moderate"
+        "target_date": "2026-09-19",
+        "pm25": 54.6,
+        "lo": 36.8,
+        "hi": 76.8,
+        "aqi": 91,
+        "category": "Satisfactory"
       },
       "tomorrow": {
-        "target_date": "2026-09-19",
-        "pm25": 78.6,
-        "lo": 59.6,
-        "hi": 105.5,
-        "aqi": 162,
+        "target_date": "2026-09-20",
+        "pm25": 60.1,
+        "lo": 37.0,
+        "hi": 83.5,
+        "aqi": 101,
         "category": "Moderate"
       },
       "yesterday": {
-        "target_date": "2026-09-17",
+        "target_date": "2026-09-18",
         "lead_days": 1,
-        "predicted": 71.8,
-        "actual": 55.3,
-        "pct_error": 29.8,
-        "in_band": true,
+        "predicted": 73.5,
+        "actual": 35.3,
+        "pct_error": 108.2,
+        "in_band": false,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "aqli_delhi_fact",
-        "text": "Reminder: Delhi residents are losing 8.2 years of life expectancy to PM2.5, per the AQLI 2025 report. The average Indian loses 3.5.",
-        "source_name": "AQLI 2025 report, EPIC India (Aug 28, 2025)",
-        "source_url": "https://epic.uchicago.in/delhi-residents-losing-8-2-years-of-their-lives-to-high-air-pollution-report/",
-        "caveat": "Relative to permanent attainment of the WHO 5 ug/m3 guideline. A statistical average across the population, not a personal prediction."
+        "id": "epa_translation",
+        "text": "In the US, today's air would be officially rated 'Unhealthy'. Here it is called Tuesday.",
+        "source_name": "US EPA, Technical Assistance Document for the Reporting of Daily Air Quality (AirNow, 2024 breakpoints)",
+        "source_url": "https://document.airnow.gov/technical-assistance-document-for-the-reporting-of-daily-air-quailty.pdf",
+        "caveat": "US categories use the same pollutant with stricter cut points than India's AQI, which is why the same air sounds scarier in American."
       }
     },
     "mumbai": {
       "name": "Mumbai",
       "now": {
-        "pm25": 19.0,
+        "pm25": 20.0,
         "source": "cpcb",
-        "last_update": "18-09-2026 05:00:00"
+        "last_update": "19-09-2026 05:00:00"
       },
       "yesterday": null,
       "comparison": {
-        "id": "kids_breathe_faster",
-        "text": "Kids breathe faster than adults, so they absorb more of this per kilo. They also live closer to the ground, where some pollutants peak. WHO's words, not ours.",
-        "source_name": "WHO, More than 90% of the world's children breathe toxic air every day (2018)",
-        "source_url": "https://www.who.int/news/item/29-10-2018-more-than-90-of-the-worlds-children-breathe-toxic-air-every-day",
-        "caveat": "Direct WHO statements: children 'breathe more rapidly than adults and so absorb more pollutants' and 'live closer to the ground, where some pollutants reach peak concentrations'."
+        "id": "archive_worst_season",
+        "text": "Worst day this season so far: 47 ug/m3 on 2026-06-26. Today is below that. Receipts in the repo.",
+        "source_name": "VAYU archive (this repository's observation files)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
       }
     },
     "pune": {
       "name": "Pune",
       "now": {
-        "pm25": 30.0,
+        "pm25": 27.0,
         "source": "cpcb",
-        "last_update": "18-09-2026 05:00:00"
+        "last_update": "19-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-18",
-        "pm25": 9.1,
-        "lo": 3.3,
-        "hi": 10.8,
-        "aqi": 15,
+        "target_date": "2026-09-19",
+        "pm25": 14.7,
+        "lo": 7.7,
+        "hi": 16.7,
+        "aqi": 24,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-19",
-        "pm25": 12.7,
-        "lo": 8.1,
-        "hi": 15.6,
-        "aqi": 21,
+        "target_date": "2026-09-20",
+        "pm25": 19.1,
+        "lo": 12.5,
+        "hi": 23.5,
+        "aqi": 32,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-09-17",
+        "target_date": "2026-09-18",
         "lead_days": 1,
-        "predicted": 12.3,
-        "actual": 7.6,
-        "pct_error": 61.8,
-        "in_band": false,
+        "predicted": 9.1,
+        "actual": 7.4,
+        "pct_error": 23.0,
+        "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "who_annual_multiple",
-        "text": "If every day were like today, you would live at 6x the WHO annual safe level.",
-        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 annual average 5 ug/m3)",
-        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
-        "caveat": "Compares one day against an annual guideline, so it describes a hypothetical year of days like today, not your actual annual exposure."
-      }
-    },
-    "bengaluru": {
-      "name": "Bengaluru",
-      "now": {
-        "pm25": 25.5,
-        "source": "cpcb",
-        "last_update": "18-09-2026 05:00:00"
-      },
-      "yesterday": null,
-      "comparison": {
         "id": "archive_percentile",
-        "text": "Today's air is worse than 98 percent of days this season in Bengaluru. Ranked, logged, versioned.",
+        "text": "Today's air is worse than 100 percent of days this season in Pune. Ranked, logged, versioned.",
         "source_name": "VAYU archive (this repository's observation files)",
         "source_url": "https://github.com/shamathakur77/vayu",
         "caveat": "Season means the trailing 90 days of this project's own observations. Small archive early on means noisy percentiles, and the repo shows exactly how small."
       }
     },
+    "bengaluru": {
+      "name": "Bengaluru",
+      "now": {
+        "pm25": 29.0,
+        "source": "cpcb",
+        "last_update": "19-09-2026 05:00:00"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "cross_city",
+        "text": "Bengaluru today is 5x the air of Nashik, the cleanest city we track. Same country, different lungs.",
+        "source_name": "VAYU same-day observations (this repository)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Same-day comparison across the five tracked cities using the same measurement rule for each. Only shown when the ratio is at least 1.5."
+      }
+    },
     "nashik": {
       "name": "Nashik",
       "now": {
-        "pm25": 28.5,
+        "pm25": 20.5,
         "source": "cpcb",
-        "last_update": "18-09-2026 05:00:00"
+        "last_update": "19-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-18",
-        "pm25": 10.5,
-        "lo": 6.2,
-        "hi": 12.9,
+        "target_date": "2026-09-19",
+        "pm25": 10.1,
+        "lo": 5.6,
+        "hi": 14.5,
         "aqi": 17,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-19",
-        "pm25": 12.5,
-        "lo": 9.9,
-        "hi": 13.9,
-        "aqi": 21,
+        "target_date": "2026-09-20",
+        "pm25": 14.8,
+        "lo": 8.5,
+        "hi": 19.8,
+        "aqi": 25,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-09-17",
+        "target_date": "2026-09-18",
         "lead_days": 1,
-        "predicted": 6.1,
-        "actual": 10.9,
-        "pct_error": 44.0,
+        "predicted": 10.5,
+        "actual": 6.0,
+        "pct_error": 75.0,
         "in_band": false,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "cross_city",
-        "text": "Nashik today is 4x the air of Pune, the cleanest city we track. Same country, different lungs.",
-        "source_name": "VAYU same-day observations (this repository)",
-        "source_url": "https://github.com/shamathakur77/vayu",
-        "caveat": "Same-day comparison across the five tracked cities using the same measurement rule for each. Only shown when the ratio is at least 1.5."
+        "id": "who_deaths_global",
+        "text": "Outdoor air pollution causes about 4.2 million early deaths a year worldwide, says WHO. It is one of the biggest killers nobody posts about.",
+        "source_name": "WHO fact sheet, Ambient (outdoor) air quality and health (2019 estimate)",
+        "source_url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+        "caveat": "A modeled global estimate for 2019, the latest WHO headline figure, with uncertainty in the millions."
       }
     }
   }
