@@ -1,111 +1,39 @@
 {
-  "generated_at": "2026-09-24T00:23:44Z",
-  "date_ist": "2026-09-24",
+  "generated_at": "2026-09-25T00:26:31Z",
+  "date_ist": "2026-09-25",
   "cities": {
     "delhi": {
       "name": "Delhi",
       "now": {
-        "pm25": 173.5,
+        "pm25": 65.0,
         "source": "cpcb",
-        "last_update": "24-09-2026 05:00:00"
+        "last_update": "25-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-24",
-        "pm25": 63.4,
-        "lo": 42.6,
-        "hi": 85.8,
-        "aqi": 112,
-        "category": "Moderate"
+        "target_date": "2026-09-25",
+        "pm25": 48.6,
+        "lo": 30.2,
+        "hi": 66.7,
+        "aqi": 81,
+        "category": "Satisfactory"
       },
       "tomorrow": {
-        "target_date": "2026-09-25",
-        "pm25": 62.9,
-        "lo": 34.6,
-        "hi": 89.3,
-        "aqi": 111,
-        "category": "Moderate"
+        "target_date": "2026-09-26",
+        "pm25": 49.9,
+        "lo": 27.9,
+        "hi": 72.8,
+        "aqi": 84,
+        "category": "Satisfactory"
       },
       "yesterday": {
-        "target_date": "2026-09-23",
+        "target_date": "2026-09-24",
         "lead_days": 1,
-        "predicted": 82.0,
-        "actual": 70.0,
-        "pct_error": 17.1,
+        "predicted": 63.4,
+        "actual": 53.5,
+        "pct_error": 18.5,
         "in_band": true,
         "obs_source": "cams"
       },
-      "comparison": {
-        "id": "n95_works",
-        "text": "A NIOSH N95 removes at least 95 percent of airborne particles when it seals to your face. On days like this, it is not paranoia, it is arithmetic.",
-        "source_name": "CDC NIOSH, Proper N95 Respirator Use (Science Bulletin)",
-        "source_url": "https://www.cdc.gov/niosh/bulletin/2020/n95-preparedness.html",
-        "caveat": "The 95 percent is the certified filter performance with a proper seal. Beards, gaps and surgical masks do not deliver it."
-      }
-    },
-    "mumbai": {
-      "name": "Mumbai",
-      "now": {
-        "pm25": 40.5,
-        "source": "cpcb",
-        "last_update": "24-09-2026 05:00:00"
-      },
-      "yesterday": null,
-      "comparison": {
-        "id": "archive_percentile",
-        "text": "Today's air is worse than 99 percent of days this season in Mumbai. Ranked, logged, versioned.",
-        "source_name": "VAYU archive (this repository's observation files)",
-        "source_url": "https://github.com/shamathakur77/vayu",
-        "caveat": "Season means the trailing 90 days of this project's own observations. Small archive early on means noisy percentiles, and the repo shows exactly how small."
-      }
-    },
-    "pune": {
-      "name": "Pune",
-      "now": {
-        "pm25": 61.0,
-        "source": "cpcb",
-        "last_update": "24-09-2026 05:00:00"
-      },
-      "today": {
-        "target_date": "2026-09-24",
-        "pm25": 20.6,
-        "lo": 12.2,
-        "hi": 90.0,
-        "aqi": 34,
-        "category": "Good"
-      },
-      "tomorrow": {
-        "target_date": "2026-09-25",
-        "pm25": 22.2,
-        "lo": 12.6,
-        "hi": 109.7,
-        "aqi": 37,
-        "category": "Good"
-      },
-      "yesterday": {
-        "target_date": "2026-09-23",
-        "lead_days": 1,
-        "predicted": 17.6,
-        "actual": 22.9,
-        "pct_error": 23.1,
-        "in_band": true,
-        "obs_source": "cams"
-      },
-      "comparison": {
-        "id": "cross_city",
-        "text": "Pune today is 5x the air of Bengaluru, the cleanest city we track. Same country, different lungs.",
-        "source_name": "VAYU same-day observations (this repository)",
-        "source_url": "https://github.com/shamathakur77/vayu",
-        "caveat": "Same-day comparison across the five tracked cities using the same measurement rule for each. Only shown when the ratio is at least 1.5."
-      }
-    },
-    "bengaluru": {
-      "name": "Bengaluru",
-      "now": {
-        "pm25": 28.0,
-        "source": "cpcb",
-        "last_update": "24-09-2026 05:00:00"
-      },
-      "yesterday": null,
       "comparison": {
         "id": "kids_breathe_faster",
         "text": "Kids breathe faster than adults, so they absorb more of this per kilo. They also live closer to the ground, where some pollutants peak. WHO's words, not ours.",
@@ -114,44 +42,116 @@
         "caveat": "Direct WHO statements: children 'breathe more rapidly than adults and so absorb more pollutants' and 'live closer to the ground, where some pollutants reach peak concentrations'."
       }
     },
-    "nashik": {
-      "name": "Nashik",
+    "mumbai": {
+      "name": "Mumbai",
       "now": {
-        "pm25": 57.0,
+        "pm25": 29.0,
         "source": "cpcb",
-        "last_update": "24-09-2026 05:00:00"
+        "last_update": "25-09-2026 05:00:00"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "who_annual_multiple",
+        "text": "If every day were like today, you would live at 6x the WHO annual safe level.",
+        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 annual average 5 ug/m3)",
+        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
+        "caveat": "Compares one day against an annual guideline, so it describes a hypothetical year of days like today, not your actual annual exposure."
+      }
+    },
+    "pune": {
+      "name": "Pune",
+      "now": {
+        "pm25": 69.0,
+        "source": "cpcb",
+        "last_update": "25-09-2026 05:00:00"
       },
       "today": {
-        "target_date": "2026-09-24",
-        "pm25": 20.0,
-        "lo": 15.2,
-        "hi": 25.8,
-        "aqi": 33,
+        "target_date": "2026-09-25",
+        "pm25": 24.2,
+        "lo": 13.7,
+        "hi": 50.7,
+        "aqi": 40,
         "category": "Good"
       },
       "tomorrow": {
-        "target_date": "2026-09-25",
-        "pm25": 21.0,
-        "lo": 15.6,
-        "hi": 26.2,
-        "aqi": 35,
+        "target_date": "2026-09-26",
+        "pm25": 22.7,
+        "lo": 11.8,
+        "hi": 49.7,
+        "aqi": 38,
         "category": "Good"
       },
       "yesterday": {
-        "target_date": "2026-09-23",
+        "target_date": "2026-09-24",
         "lead_days": 1,
-        "predicted": 19.9,
-        "actual": 23.2,
-        "pct_error": 14.2,
+        "predicted": 20.6,
+        "actual": 28.6,
+        "pct_error": 28.0,
         "in_band": true,
         "obs_source": "cams"
       },
       "comparison": {
-        "id": "cigarettes_week",
-        "text": "A week of air like this = 18 cigarettes. Your lungs are keeping the receipts.",
-        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence",
+        "id": "cigarettes_day",
+        "text": "Breathing Pune air today = smoking 3 cigarettes. No lighter needed.",
+        "source_name": "Berkeley Earth, Air Pollution and Cigarette Equivalence (Richard A. Muller and Elizabeth A. Muller)",
         "source_url": "https://berkeleyearth.org/air-pollution-and-cigarette-equivalence/",
-        "caveat": "Extends the Berkeley Earth per-day rule of thumb across a week at the same level. Real weeks vary day to day."
+        "caveat": "A rule of thumb comparing health effects, not identical smoke. The authors call it a rough estimate, and unlike smoking, polluted air is breathed by everyone including kids."
+      }
+    },
+    "bengaluru": {
+      "name": "Bengaluru",
+      "now": {
+        "pm25": 23.5,
+        "source": "cpcb",
+        "last_update": "25-09-2026 05:00:00"
+      },
+      "yesterday": null,
+      "comparison": {
+        "id": "archive_worst_season",
+        "text": "Worst day this season so far: 29 ug/m3 on 2026-09-14. Today is below that. Receipts in the repo.",
+        "source_name": "VAYU archive (this repository's observation files)",
+        "source_url": "https://github.com/shamathakur77/vayu",
+        "caveat": "Computed from this project's own logged observations, which start when the project started. Git history is the proof."
+      }
+    },
+    "nashik": {
+      "name": "Nashik",
+      "now": {
+        "pm25": 62.0,
+        "source": "cpcb",
+        "last_update": "25-09-2026 05:00:00"
+      },
+      "today": {
+        "target_date": "2026-09-25",
+        "pm25": 22.8,
+        "lo": 14.3,
+        "hi": 33.0,
+        "aqi": 38,
+        "category": "Good"
+      },
+      "tomorrow": {
+        "target_date": "2026-09-26",
+        "pm25": 21.4,
+        "lo": 12.8,
+        "hi": 32.2,
+        "aqi": 36,
+        "category": "Good"
+      },
+      "yesterday": {
+        "target_date": "2026-09-24",
+        "lead_days": 1,
+        "predicted": 20.0,
+        "actual": 32.5,
+        "pct_error": 38.5,
+        "in_band": false,
+        "obs_source": "cams"
+      },
+      "comparison": {
+        "id": "who_daily_multiple",
+        "text": "That is 4x the WHO daily safe limit. The limit is 15. We are not close.",
+        "source_name": "WHO, 2021 Global Air Quality Guidelines (PM2.5 24-hour average 15 ug/m3)",
+        "source_url": "https://www.who.int/news/item/04-04-2022-billions-of-people-still-breathe-unhealthy-air-new-who-data",
+        "caveat": "WHO guidelines are health-based targets, not legal limits. India's own national standard (60 ug/m3 for 24h PM2.5) is four times looser."
       }
     }
   }
