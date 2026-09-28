@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pavan, your air pet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @property --sky1 { syntax: "<color>"; inherits: false; initial-value: #8fc8f0; }
+  @property --sky2 { syntax: "<color>"; inherits: false; initial-value: #f6efc8; }
+  @property --sky3 { syntax: "<color>"; inherits: false; initial-value: #f4e2b0; }
+  :root {
+    --bg: #f6f2fb; --fg: #2f2340; --muted: #66597a;
+    --chip: #ffffff; --chip-fg: #2f2340; --chip-on: #3b2a55; --chip-on-fg: #ffffff;
+    --line: #cfc6e4; --focus: #6d4dff;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12101f; --fg: #f3effc; --muted: #b0a8cc;
+      --chip: #1d1a33; --chip-fg: #f3effc; --chip-on: #f3effc; --chip-on-fg: #12101f;
+      --line: #322d55; --focus: #b3a7ff;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12101f; --fg: #f3effc; --muted: #b0a8cc;
+    --chip: #1d1a33; --chip-fg: #f3effc; --chip-on: #f3effc; --chip-on-fg: #12101f;
+    --line: #322d55; --focus: #b3a7ff;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+    font-family: "Fredoka", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app { height: 100%; max-width: 640px; margin: 0 auto; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  h1 { font-size: 1.25rem; font-weight: 600; margin: 0; }
+  h1 span { font-weight: 400; color: var(--muted); font-size: 0.9rem; margin-left: 6px; }
+  .dstat { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+  .stage {
+    --sky1: #8fc8f0; --sky2: #f6efc8; --sky3: #f4e2b0;
+    position: relative; flex: 1 1 auto; min-height: 500px;
+    border-radius: 26px; overflow: hidden;
+    background: linear-gradient(180deg, var(--sky1) 0%, var(--sky2) 62%, var(--sky3) 100%);
+    transition: --sky1 0.9s ease, --sky2 0.9s ease, --sky3 0.9s ease;
+    border: 3px solid #3b2a55;
+    touch-action: manipulation; cursor: pointer;
+  }
+  .stage::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(circle at 82% 16%, rgba(255,255,255,0.7), rgba(255,255,255,0) 38%);
+  }
+  .stage:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .cloud {
+    position: absolute; z-index: 0; height: 34px; width: 110px; background: #fff; border-radius: 40px; opacity: 0.85;
+    left: -160px; animation: drift linear infinite;
+  }
+  .cloud::before, .cloud::after { content: ""; position: absolute; background: #fff; border-radius: 50%; }
+  .cloud::before { width: 46px; height: 46px; top: -22px; left: 16px; }
+  .cloud::after { width: 34px; height: 34px; top: -14px; left: 58px; }
+  .c1 { top: 47%; animation-duration: 70s; }
+  .c2 { top: 57%; animation-duration: 95s; animation-delay: -40s; transform: scale(0.7); }
+  .c3 { top: 41%; animation-duration: 120s; animation-delay: -80s; transform: scale(0.85); }
+  @keyframes drift { from { left: -160px; } to { left: 110%; } }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 1; }
+
+  .bubble {
+    position: absolute; left: 12px; right: 12px; top: 12px; z-index: 3; cursor: default;
+    padding: 12px 14px 11px; border-radius: 22px;
+    background: rgba(255, 250, 241, 0.95); color: #2f2340;
+    border: 3px solid #3b2a55; box-shadow: 0 4px 0 #3b2a55;
+  }
+  .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .pill {
+    padding: 5px 14px; border-radius: 999px; font-weight: 600; font-size: 1.02rem;
+    color: #2f2340; background: #8fa3d9; white-space: nowrap; border: 2.5px solid #3b2a55;
+    transition: background 0.35s ease;
+  }
+  .big { text-align: right; min-width: 0; }
+  .big b { display: block; font-size: 2.2rem; line-height: 1; font-weight: 600; color: #2f2340; }
+  .big span { display: block; margin-top: 3px; font-size: 0.76rem; line-height: 1.25; color: #66597a; max-width: 170px; margin-left: auto; font-weight: 400; }
+  .bubble p { margin: 0; font-size: 1.1rem; line-height: 1.4; font-weight: 500; min-height: 2.8em; }
+  .bubble small { display: block; margin-top: 7px; font-size: 0.8rem; line-height: 1.35; color: #66597a; font-weight: 400; }
+
+  .hint {
+    position: absolute; left: 12px; right: 12px; bottom: 10px; text-align: center; z-index: 3; pointer-events: none;
+    font-size: 1rem; font-weight: 600; color: #fffaf0; min-height: 1.3em;
+    text-shadow: 0 2px 0 #3b2a55, 1px 1px 0 #3b2a55, -1px 1px 0 #3b2a55;
+  }
+  #fx { position: absolute; inset: 0; pointer-events: none; z-index: 4; overflow: hidden; }
+  .fx { position: absolute; font-size: 24px; line-height: 1; animation: floatup 1.4s ease-out forwards; }
+  @keyframes floatup {
+    0% { transform: translate(-50%, 0) scale(0.6); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--dx)), -110px) scale(1.25); opacity: 0; }
+  }
+  .fallback {
+    position: absolute; left: 50%; top: 66%; width: 150px; height: 150px; z-index: 1;
+    transform: translate(-50%, -50%); border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #fff, #bff5e6 60%, #7fd9c0); border: 3px solid #3b2a55;
+  }
+
+  button.chip {
+    font: inherit; font-weight: 500; font-size: 0.98rem; min-height: 46px; padding: 0 12px; min-width: 0;
+    border-radius: 999px; border: 2px solid var(--line); background: var(--chip); color: var(--chip-fg); cursor: pointer;
+  }
+  button.chip[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-fg); border-color: var(--chip-on); }
+  button.chip:focus-visible, details summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .cities { display: flex; gap: 6px; }
+  .cities .chip { flex: 1 1 0; padding: 0 4px; font-size: 0.88rem; }
+  .asks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .share { min-height: 40px; font-size: 0.9rem; padding: 0 16px; }
+
+  details.about { font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+  details.about summary { cursor: pointer; padding: 4px 0; }
+  details.about p { margin: 6px 0 0; }
+  details.about a { color: inherit; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cloud { animation: none; left: 12%; }
+    .c2 { left: 60%; } .c3 { left: 78%; }
+    .fx { animation-duration: 0.01s; }
+  }
+  @media (max-width: 380px) {
+    .bubble p { font-size: 1rem; }
+    .cities .chip { font-size: 0.78rem; }
+    .big b { font-size: 1.9rem; }
+  }
+</style>
+</head>
+<body>
+<main class="app">
+  <header>
+    <div>
+      <h1>Pavan <span>your air pet</span></h1>
+      <div class="dstat" id="dstat">Saved numbers, 28 Sept run</div>
+    </div>
+    <button class="chip share" id="share" type="button">Share forecast</button>
+  </header>
+
+  <section class="stage" id="stage" tabindex="0" role="button" aria-label="Pavan the air pet. Press to pet.">
+    <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+    <canvas id="c" aria-hidden="true"></canvas>
+    <div id="fx"></div>
+    <div class="bubble">
+      <div class="top">
+        <span class="pill" id="pill"></span>
+        <div class="big"><b id="big"></b><span id="bigl"></span></div>
+      </div>
+      <p id="say"></p>
+      <small id="sub"></small>
+    </div>
+    <div class="hint" id="hint">Tap me</div>
+  </section>
+  <div class="sr" id="sr" aria-live="polite"></div>
+
+  <nav class="cities" id="cities" aria-label="Choose a city"></nav>
+  <nav class="asks" id="asks" aria-label="Ask Pavan"></nav>
+
+  <details class="about">
+    <summary>How this works</summary>
+    <p>Pavan is a character, not a person. Its mood and words come from plain rules applied to the numbers VAYU publishes each night. Nothing is written by an AI while you watch, and nothing is guessed. Hosted next to VAYU, this page reads the same data files as the site when you open it. If it can't reach them, it shows a saved snapshot and says so at the top.</p>
+    <p>AQI here is the PM2.5 part of the Indian AQI, so the official city AQI can read higher. Go-out advice follows the CPCB health messages for each AQI band. It is not medical advice. Live numbers: <a href="https://shamathakur77.github.io/vayu/" target="_blank" rel="noopener">VAYU site</a>. Code: <a href="https://github.com/shamathakur77/vayu" target="_blank" rel="noopener">github.com/shamathakur77/vayu</a>.</p>
+  </details>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Data ----------
+     Saved snapshot of VAYU's data/latest.json and data/scoreboard.json (28 Sept 2026 run).
+     When this page is hosted next to VAYU it reads the live files instead (see load()). */
+  var SNAPSHOT = {
+    delhi:     { name: "Delhi",     now: 27.4, nowDate: "2026-09-27", nowSource: "latest daily (cams)", tomorrow: { date: "2026-09-29", pm25: 50.3, lo: 26.4, hi: 69.0, aqi: 84, cat: "Satisfactory" }, stats: { n: 28, mae: 15.3, base: 19.3, band: 71.4 } },
+    mumbai:    { name: "Mumbai",    now: 17.3, nowDate: "2026-09-27", nowSource: "latest daily (cams)", tomorrow: null, stats: null },
+    pune:      { name: "Pune",      now: 10.4, nowDate: "2026-09-27", nowSource: "latest daily (cams)", tomorrow: { date: "2026-09-29", pm25: 20.6, lo: 13.3, hi: 39.5, aqi: 34, cat: "Good" },         stats: { n: 28, mae: 3.5,  base: 3.6, band: 75.0 } },
+    bengaluru: { name: "Bengaluru", now: 21.7, nowDate: "2026-09-27", nowSource: "latest daily (cams)", tomorrow: null, stats: null },
+    nashik:    { name: "Nashik",    now: 10.4, nowDate: "2026-09-27", nowSource: "latest daily (cams)", tomorrow: { date: "2026-09-29", pm25: 21.2, lo: 14.6, hi: 31.4, aqi: 35, cat: "Good" },         stats: { n: 28, mae: 3.4,  base: 3.9, band: 42.9 } }
+  };
+  var DATA = SNAPSHOT;
+  var DATA_INFO = { live: false, generated: "2026-09-28T00:24:05Z" };
+  var ORDER = ["delhi", "mumbai", "pune", "bengaluru", "nashik"];
+
+  function catFromAqi(aqi) {
+    return aqi <= 50 ? "Good" : aqi <= 100 ? "Satisfactory" : aqi <= 200 ? "Moderate" : aqi <= 300 ? "Poor" : aqi <= 400 ? "Very Poor" : "Severe";
+  }
+  /* Turn VAYU's two JSON files into the shape this page uses. Missing pieces stay null, never guessed. */
+  function normalise(latest, board) {
+    var out = {};
+    ORDER.forEach(function (k) {
+      var L = (latest && latest.cities && latest.cities[k]) || {};
+      var B = (board && board.cities && board.cities[k]) || {};
+      var t = L.tomorrow;
+      var s = B.season && B.season.lead2;
+      out[k] = {
+        name: L.name || B.name || k,
+        now: L.now && typeof L.now.pm25 === "number" ? L.now.pm25 : null,
+        nowDate: L.now ? L.now.last_update : null,
+        nowSource: L.now ? L.now.source : "",
+        tomorrow: t && typeof t.pm25 === "number" ? { date: t.target_date, pm25: t.pm25, lo: t.lo, hi: t.hi, aqi: t.aqi, cat: t.category || catFromAqi(t.aqi) } : null,
+        stats: s && typeof s.mae === "number" ? { n: s.n, mae: s.mae, base: s.baseline_mae, band: s.band_coverage } : null
+      };
+    });
+    return out;
+  }
+
+  /* ---------- Moods and verdicts ---------- */
+  var MOODS = {
+    good:   { color: 0x35f0c9, mouth: 1.0,   open: 1, bounce: 1.0,  speed: 1.3, scale: 1.0,  eye: 1.0,  worry: -0.15, mask: 0, sky: ["#7fd3ff", "#ffe6c2", "#ffd9a8"] },
+    ok:     { color: 0xa6f07a, mouth: 0.6,   open: 0, bounce: 0.7,  speed: 1.1, scale: 1.0,  eye: 1.0,  worry: 0,     mask: 0, sky: ["#8fc8f0", "#f6efc8", "#f4e2b0"] },
+    meh:    { color: 0xffc857, mouth: 0.0,   open: 0, bounce: 0.4,  speed: 0.9, scale: 0.98, eye: 0.95, worry: 0.1,   mask: 0, sky: ["#c3cfd6", "#f6e4b8", "#efd7a3"] },
+    poor:   { color: 0xff8a4c, mouth: -0.5,  open: 0, bounce: 0.25, speed: 0.7, scale: 0.95, eye: 0.9,  worry: 0.4,   mask: 1, sky: ["#cdbfb8", "#f4b98e", "#e9a77e"] },
+    bad:    { color: 0xff4d6d, mouth: -1.0,  open: 0, bounce: 0.12, speed: 0.5, scale: 0.92, eye: 0.8,  worry: 0.6,   mask: 1, sky: ["#b7a3b3", "#eb8f9c", "#dd7f8c"] },
+    unsure: { color: 0x8fa3d9, mouth: -0.15, open: 0, bounce: 0.35, speed: 0.8, scale: 1.0,  eye: 1.0,  worry: 0.3,   mask: 0, sky: ["#b3b0dc", "#f2d7e8", "#e9c9de"] }
+  };
+  function hex(n) { return "#" + ("000000" + n.toString(16)).slice(-6); }
+
+  var VERDICT = {
+    "Good":         { word: "Go for it",     icon: "\uD83C\uDF33", mood: "good", advice: "Air is fine. Plans outside are on." },
+    "Satisfactory": { word: "Fine for most", icon: "\uD83D\uDEB6", mood: "ok",   advice: "Fine for most people. If you're sensitive, take it lighter." },
+    "Moderate":     { word: "Go easy",       icon: "\uD83D\uDC22", mood: "meh",  advice: "Go easy if you have asthma, or a lung or heart condition." },
+    "Poor":         { word: "Keep it short", icon: "\uD83D\uDE37", mood: "poor", advice: "Long stretches outside can bother most people. Keep it short." },
+    "Very Poor":    { word: "Stay in",       icon: "\uD83C\uDFE0", mood: "bad",  advice: "Long exposure can make you ill. Stay in where you can." },
+    "Severe":       { word: "Stay in",       icon: "\uD83C\uDFE0", mood: "bad",  advice: "Long exposure can make you ill. Stay in where you can." }
+  };
+  var QUIP = { good: "Sky's on our side.", ok: "Pretty decent.", meh: "A mixed bag.", poor: "Mask day.", bad: "Rough one." };
+
+  /* ---------- Words: plain rules on the numbers, no guessing ---------- */
+  function r(n) { return Math.round(n); }
+  function dayLabel(iso) {
+    var p = iso.split("-");
+    var d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]));
+    return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
+  }
+  function istToday() { return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" }); }
+  function when(iso) {
+    var a = iso.split("-"), b = istToday().split("-");
+    var diff = Math.round((Date.UTC(+a[0], +a[1] - 1, +a[2]) - Date.UTC(+b[0], +b[1] - 1, +b[2])) / 86400000);
+    return diff === 0 ? "today" : diff === 1 ? "tomorrow" : dayLabel(iso);
+  }
+  function nowLine(c) {
+    if (c.now == null) return "";
+    var modelled = /cams/i.test(c.nowSource || "");
+    return "Latest daily value" + (c.nowDate ? " (" + dayLabel(c.nowDate) + ")" : "") + ": " + r(c.now) + " \u00b5g/m\u00b3, " + (modelled ? "modelled, not a sensor." : "source: " + c.nowSource + ".");
+  }
+  function verdictFor(c) { return c.tomorrow ? (VERDICT[c.tomorrow.cat] || VERDICT.Severe) : null; }
+
+  function askTomorrow(city) {
+    var c = DATA[city], t = c.tomorrow, v = verdictFor(c);
+    if (!t) {
+      return { pill: "No call yet", mood: "unsure", big: "?", bigl: "No forecast for " + c.name,
+        say: c.name + " has me stumped. My model hasn't managed a forecast there yet, and I won't fake one.",
+        sub: nowLine(c) };
+    }
+    var w = when(t.date);
+    return { pill: v.word, mood: v.mood, big: String(r(t.pm25)), bigl: "\u00b5g/m\u00b3 PM2.5 " + w + " \u00b7 AQI " + t.aqi + ", " + t.cat,
+      say: c.name + ": " + QUIP[v.mood] + " I'm 80% sure it lands between " + r(t.lo) + " and " + r(t.hi) + ".",
+      sub: dayLabel(t.date) + " forecast. " + nowLine(c) };
+  }
+  function askGoOut(city) {
+    var c = DATA[city], t = c.tomorrow, v = verdictFor(c);
+    if (!t) {
+      return { pill: "No call yet", mood: "unsure", big: "?", bigl: "No forecast, no advice",
+        say: "I can't tell you if it's fine to go out in " + c.name + " over the next two days, and I won't guess. Check a live AQI reading first.",
+        sub: nowLine(c) };
+    }
+    return { pill: v.word, mood: v.mood, big: v.icon, bigl: c.name + " " + when(t.date) + ", " + t.cat,
+      say: v.advice, sub: "Advice follows CPCB's health message for this AQI band. Not medical advice." };
+  }
+  function askCleanest() {
+    var list = ORDER.filter(function (k) { return DATA[k].tomorrow; }).map(function (k) {
+      return { key: k, name: DATA[k].name, pm: DATA[k].tomorrow.pm25, cat: DATA[k].tomorrow.cat, date: DATA[k].tomorrow.date };
+    }).sort(function (a, b) { return a.pm - b.pm; });
+    var none = ORDER.filter(function (k) { return !DATA[k].tomorrow; }).map(function (k) { return DATA[k].name; });
+    if (!list.length) {
+      return { pill: "No call yet", mood: "unsure", big: "?", bigl: "No forecasts available",
+        say: "I have no forecasts right now, so I can't rank the cities. I won't guess.", sub: "" };
+    }
+    var min = list[0].pm;
+    var win = list.filter(function (x) { return x.pm - min < 2; });
+    var rest = list.slice(win.length);
+    var names = win.map(function (x) { return x.name; });
+    var w = when(win[0].date);
+    var say = win.length > 1
+      ? "Cleanest " + w + ": " + names.join(" and ") + ", basically tied at about " + r(min) + "."
+      : "Cleanest " + w + ": " + names[0] + ", at about " + r(min) + ".";
+    if (rest.length) say += " Next up: " + rest.map(function (x) { return x.name + " " + r(x.pm); }).join(", ") + ".";
+    return { pill: names.join(" & "), mood: (VERDICT[win[0].cat] || VERDICT.Severe).mood, big: String(r(min)),
+      bigl: "\u00b5g/m\u00b3 PM2.5, lowest of the " + list.length + " I can forecast",
+      say: say, sub: none.length ? "No forecast yet, so not in the race: " + none.join(", ") + "." : "" };
+  }
+  function askSure(city) {
+    var c = DATA[city], s = c.stats;
+    if (!s) {
+      return { pill: "No score", mood: "unsure", big: "\u2013", bigl: "No checked forecasts for " + c.name,
+        say: "I have no graded forecasts for " + c.name + ", so I have nothing to score. I'd rather say that than make it up.",
+        sub: "A score needs forecasts that were already checked against what happened." };
+    }
+    var ratio = s.mae / s.base, pill, mood, verdict;
+    if (ratio <= 0.85) { pill = "Beats the baseline"; mood = "good"; verdict = "That beats just repeating the last known number by a clear margin."; }
+    else if (ratio < 0.95) { pill = "Slightly ahead"; mood = "ok"; verdict = "That beats repeating the last known number, but only slightly."; }
+    else if (ratio <= 1.05) { pill = "A tie"; mood = "meh"; verdict = "That's basically a tie with repeating the last known number. I won't dress it up."; }
+    else { pill = "Behind baseline"; mood = "poor"; verdict = "That's worse than repeating the last known number."; }
+    var band = " My 80% range held " + s.band + "% of the time";
+    band += s.band < 60 ? ", which is too narrow." : (s.band < 78 ? " (the goal is 80)." : ".");
+    return { pill: pill, mood: mood, big: String(s.mae), bigl: "\u00b5g/m\u00b3 average miss. Repeating the last number: " + s.base,
+      say: verdict + band, sub: "Last 90 days, " + s.n + " checked forecasts. That is a small sample." };
+  }
+  var ASKS = [
+    { id: "tomorrow", label: "Forecast", fn: askTomorrow },
+    { id: "goout", label: "Can I go out?", fn: askGoOut },
+    { id: "cleanest", label: "Cleanest city?", fn: askCleanest },
+    { id: "sure", label: "How sure are you?", fn: askSure }
+  ];
+  var QUIPS = {
+    good:   ["Tap me. I dare you.", "Ask me who has the cleanest air.", "I'm having a great air day."],
+    ok:     ["Tap me for a hop.", "Try \"Can I go out?\"", "Decent air. Decent me."],
+    meh:    ["Tap me. I could use it.", "Try \"Cleanest city?\"", "Meh air, meh mood."],
+    poor:   ["Mask on. Still tappable.", "Tap me. Distraction helps.", "Try \"Cleanest city?\""],
+    bad:    ["Stay in. Tap me instead.", "Mask on, windows shut.", "Try \"Cleanest city?\""],
+    unsure: ["Tap me. I'm thinking.", "Try Pune. I know things about Pune.", "I don't guess. It's a whole thing."]
+  };
+  var TAPS = ["hehe", "That tickles", "Again!", "Careful, I'm made of light", "Best part of my day"];
+
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = { get DATA() { return DATA; }, set DATA(v) { DATA = v; }, ORDER: ORDER, ASKS: ASKS, normalise: normalise, when: when };
+    return;
+  }
+
+  /* ---------- UI ---------- */
+  var $ = function (id) { return document.getElementById(id); };
+  var sayEl = $("say"), subEl = $("sub"), hintEl = $("hint"), pillEl = $("pill"), bigEl = $("big"), biglEl = $("bigl");
+  var citiesEl = $("cities"), asksEl = $("asks"), stageEl = $("stage"), fxEl = $("fx"), srEl = $("sr"), shareEl = $("share");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var state = { city: "delhi", ask: "tomorrow", mood: "ok" };
+  var typeTimer = null, pet = null;
+
+  function typeText(text) {
+    if (typeTimer) clearInterval(typeTimer);
+    srEl.textContent = text;
+    if (reduce) { sayEl.textContent = text; return; }
+    var i = 0; sayEl.textContent = "";
+    typeTimer = setInterval(function () {
+      i += 2; sayEl.textContent = text.slice(0, i);
+      if (i >= text.length) { clearInterval(typeTimer); typeTimer = null; sayEl.textContent = text; }
+    }, 14);
+  }
+  function setHint(t) { hintEl.textContent = t; }
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+  function setSky(name) {
+    var s = MOODS[name].sky;
+    stageEl.style.setProperty("--sky1", s[0]);
+    stageEl.style.setProperty("--sky2", s[1]);
+    stageEl.style.setProperty("--sky3", s[2]);
+  }
+  function fx(ch, x, y, n) {
+    if (reduce) return;
+    for (var i = 0; i < n; i++) {
+      (function (i) {
+        setTimeout(function () {
+          var s = document.createElement("span");
+          s.className = "fx"; s.textContent = ch;
+          s.style.left = (x + (Math.random() * 60 - 30)) + "px";
+          s.style.top = (y + (Math.random() * 20 - 10)) + "px";
+          s.style.setProperty("--dx", (Math.random() * 60 - 30) + "px");
+          fxEl.appendChild(s);
+          setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 1500);
+        }, i * 90);
+      })(i);
+    }
+  }
+  function petSpot() { return { x: stageEl.clientWidth / 2, y: stageEl.clientHeight * 0.66 }; }
+
+  var cityButtons = {}, askButtons = {};
+  ORDER.forEach(function (k) {
+    var b = document.createElement("button");
+    b.className = "chip"; b.type = "button"; b.textContent = DATA[k].name; b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function () { state.city = k; refresh(true); });
+    citiesEl.appendChild(b); cityButtons[k] = b;
+  });
+  ASKS.forEach(function (a) {
+    var b = document.createElement("button");
+    b.className = "chip"; b.type = "button"; b.textContent = a.label; b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function () { state.ask = a.id; refresh(false); });
+    asksEl.appendChild(b); askButtons[a.id] = b;
+  });
+
+  function refresh(cityChanged) {
+    if (cityChanged) state.ask = "tomorrow";
+    ORDER.forEach(function (k) { cityButtons[k].setAttribute("aria-pressed", String(k === state.city)); });
+    ASKS.forEach(function (a) { askButtons[a.id].setAttribute("aria-pressed", String(a.id === state.ask)); });
+    var ask = ASKS.filter(function (a) { return a.id === state.ask; })[0];
+    var out = ask.fn(state.city);
+    state.mood = out.mood;
+    pillEl.textContent = out.pill;
+    pillEl.style.background = hex(MOODS[out.mood].color);
+    bigEl.textContent = out.big;
+    biglEl.textContent = out.bigl;
+    subEl.textContent = out.sub;
+    typeText(out.say);
+    setHint(pick(QUIPS[out.mood]));
+    setSky(out.mood);
+    if (pet) {
+      pet.setMood(out.mood);
+      pet.hop();
+      var s = petSpot();
+      if (out.mood === "good") fx("\u2728", s.x, s.y, 4);
+      else if (out.mood === "poor" || out.mood === "bad") fx("\uD83D\uDCA8", s.x, s.y, 3);
+    }
+  }
+
+  shareEl.addEventListener("click", function () {
+    var parts = [], none = [], date = "";
+    ORDER.forEach(function (k) {
+      var t = DATA[k].tomorrow;
+      if (t) { parts.push(DATA[k].name + " " + r(t.pm25) + " (" + r(t.lo) + "-" + r(t.hi) + ")"); date = dayLabel(t.date); }
+      else none.push(DATA[k].name);
+    });
+    var text = "Air forecast for " + date + ", PM2.5 in \u00b5g/m\u00b3 with an 80% range: " + parts.join(", ") + "." +
+      (none.length ? " No forecast yet: " + none.join(", ") + "." : "") + " From VAYU: https://shamathakur77.github.io/vayu/";
+    function done(msg) { shareEl.textContent = msg; setTimeout(function () { shareEl.textContent = "Share forecast"; }, 1800); }
+    function showText() { subEl.textContent = "Copy this: " + text; done("Copy below"); }
+    function fallback() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done("Copied"); }, showText);
+      } else { showText(); }
+    }
+    if (navigator.share) { navigator.share({ text: text }).catch(fallback); } else { fallback(); }
+  });
+
+  /* ---------- 3D pet: storybook toon style ---------- */
+  function buildPet() {
+    var canvas = $("c");
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x000000, 0);
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 60);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.85));
+    var sun = new THREE.DirectionalLight(0xffffff, 0.75); sun.position.set(2, 3, 4); scene.add(sun);
+
+    var fmt = renderer.capabilities.isWebGL2 ? THREE.RedFormat : THREE.LuminanceFormat;
+    var gm = new THREE.DataTexture(new Uint8Array([120, 195, 255]), 3, 1, fmt);
+    gm.minFilter = gm.magFilter = THREE.NearestFilter; gm.needsUpdate = true;
+
+    var PLUM = 0x3b2a55;
+    function toon(color) { return new THREE.MeshToonMaterial({ color: color, gradientMap: gm }); }
+    function outlined(geo, mat, s) {
+      var m = new THREE.Mesh(geo, mat);
+      m.add(new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: PLUM, side: THREE.BackSide })).translateZ(0)).children[0].scale.setScalar(s);
+      return m;
+    }
+    function basic(color, extra) {
+      var o = { color: color };
+      if (extra) for (var k in extra) o[k] = extra[k];
+      return new THREE.MeshBasicMaterial(o);
+    }
+
+    var col = new THREE.Color(MOODS.ok.color);
+    var white = new THREE.Color(1, 1, 1);
+    var tint = white.clone().lerp(col, 0.5);
+    var bodyMat = toon(tint.getHex());
+
+    var group = new THREE.Group(); scene.add(group);
+
+    // Body
+    var body = outlined(new THREE.SphereGeometry(1, 40, 32), bodyMat, 1.05);
+    body.scale.set(1, 0.92, 0.95);
+    group.add(body);
+
+    // Eyes: big anime eyes with two shine spots
+    var eyeGs = [], lookGs = [], happyEyes = [], brows = [];
+    [-1, 1].forEach(function (s) {
+      var eg = new THREE.Group();
+      eg.position.set(s * 0.34, 0.06, 0.86); eg.rotation.y = s * 0.28;
+      var dark = new THREE.Mesh(new THREE.SphereGeometry(0.17, 20, 16), basic(0x2b1d3f)); dark.scale.set(0.85, 1.15, 0.3);
+      var look = new THREE.Group();
+      var iris = new THREE.Mesh(new THREE.SphereGeometry(0.17, 20, 16), basic(0x7a5cc0)); iris.scale.set(0.68, 0.95, 0.3); iris.position.z = 0.02;
+      var pupil = new THREE.Mesh(new THREE.SphereGeometry(0.17, 16, 12), basic(0x1a1030)); pupil.scale.set(0.36, 0.55, 0.3); pupil.position.z = 0.04;
+      look.add(iris); look.add(pupil);
+      var hi1 = new THREE.Mesh(new THREE.SphereGeometry(0.048, 12, 10), basic(0xffffff)); hi1.position.set(-0.05, 0.075, 0.075);
+      var hi2 = new THREE.Mesh(new THREE.SphereGeometry(0.024, 10, 8), basic(0xffffff)); hi2.position.set(0.05, -0.065, 0.075);
+      eg.add(dark); eg.add(look); eg.add(hi1); eg.add(hi2);
+      group.add(eg); eyeGs.push(eg); lookGs.push(look);
+
+      var he = new THREE.Mesh(new THREE.TorusGeometry(0.1, 0.026, 8, 18, Math.PI), basic(0x2b1d3f));
+      he.position.set(s * 0.34, 0.05, 0.9); he.rotation.y = s * 0.28; he.visible = false;
+      group.add(he); happyEyes.push(he);
+
+      var br = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.032, 0.05), basic(PLUM));
+      br.position.set(s * 0.34, 0.31, 0.83); br.rotation.y = s * 0.28;
+      group.add(br); brows.push({ mesh: br, side: s });
+    });
+
+    // Mouth: line for curve, half-disc for open smile
+    var mouthLine = new THREE.Mesh(new THREE.TorusGeometry(0.07, 0.015, 8, 16, Math.PI), basic(PLUM));
+    mouthLine.position.set(0, -0.14, 0.93); group.add(mouthLine);
+    var mouthOpen = new THREE.Group();
+    var mo = new THREE.Mesh(new THREE.CircleGeometry(0.09, 20, Math.PI, Math.PI), basic(0x8a2a4a, { side: THREE.DoubleSide }));
+    var tongue = new THREE.Mesh(new THREE.CircleGeometry(0.045, 14, Math.PI, Math.PI), basic(0xff8fa8, { side: THREE.DoubleSide })); tongue.position.set(0, -0.045, 0.002);
+    mouthOpen.add(mo); mouthOpen.add(tongue); mouthOpen.position.set(0, -0.11, 0.935); mouthOpen.visible = false; group.add(mouthOpen);
+
+    // Blush
+    var blushes = [];
+    [-1, 1].forEach(function (s) {
+      var b = new THREE.Mesh(new THREE.CircleGeometry(0.1, 20), basic(0xff8fa8, { transparent: true, opacity: 0.4, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2, side: THREE.DoubleSide }));
+      b.scale.set(1.35, 0.8, 1); b.position.set(s * 0.58, -0.05, 0.79); b.rotation.y = s * 0.75;
+      group.add(b); blushes.push(b);
+    });
+
+    // Sprout on top (sways in the wind)
+    var sprout = new THREE.Group(); sprout.position.set(0, 0.9, 0.02); group.add(sprout);
+    var stem = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.028, 0.26, 8), toon(0x5fbf78)); stem.position.y = 0.12; sprout.add(stem);
+    [-1, 1].forEach(function (s) {
+      var leaf = outlined(new THREE.SphereGeometry(0.14, 14, 10), toon(0x86e09a), 1.16);
+      leaf.scale.set(1, 0.32, 0.55); leaf.position.set(s * 0.14, 0.27, 0); leaf.rotation.z = s * 0.5;
+      sprout.add(leaf);
+    });
+
+    // Arms and feet
+    var arms = [];
+    [-1, 1].forEach(function (s) {
+      var pivot = new THREE.Group(); pivot.position.set(s * 0.9, -0.05, 0.05);
+      var nub = outlined(new THREE.SphereGeometry(0.16, 14, 12), bodyMat, 1.14);
+      nub.scale.set(0.75, 1.2, 0.75); nub.position.set(s * 0.06, -0.14, 0);
+      pivot.add(nub); group.add(pivot); arms.push({ pivot: pivot, side: s });
+      var foot = outlined(new THREE.SphereGeometry(0.16, 14, 12), bodyMat, 1.14);
+      foot.scale.set(1, 0.6, 1.1); foot.position.set(s * 0.3, -0.86, 0.18); group.add(foot);
+    });
+
+    // Face mask for poor air
+    var maskG = new THREE.Group();
+    var mw = 0.62, mh = 0.34, rd = 0.12, sh = new THREE.Shape();
+    sh.moveTo(-mw / 2 + rd, -mh / 2); sh.lineTo(mw / 2 - rd, -mh / 2);
+    sh.quadraticCurveTo(mw / 2, -mh / 2, mw / 2, -mh / 2 + rd); sh.lineTo(mw / 2, mh / 2 - rd);
+    sh.quadraticCurveTo(mw / 2, mh / 2, mw / 2 - rd, mh / 2); sh.lineTo(-mw / 2 + rd, mh / 2);
+    sh.quadraticCurveTo(-mw / 2, mh / 2, -mw / 2, mh / 2 - rd); sh.lineTo(-mw / 2, -mh / 2 + rd);
+    sh.quadraticCurveTo(-mw / 2, -mh / 2, -mw / 2 + rd, -mh / 2);
+    maskG.add(new THREE.Mesh(new THREE.ShapeGeometry(sh), basic(0xffffff, { side: THREE.DoubleSide })));
+    [-0.07, 0, 0.07].forEach(function (yy) {
+      var pl = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.014), basic(0xc9c2e6, { side: THREE.DoubleSide })); pl.position.set(0, yy, 0.002); maskG.add(pl);
+    });
+    [-1, 1].forEach(function (s) {
+      var st = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.018, 0.012), basic(0xffffff)); st.position.set(s * (mw / 2 + 0.08), 0.02, -0.02); st.rotation.z = -s * 0.2; maskG.add(st);
+    });
+    maskG.position.set(0, -0.2, 0.97); maskG.scale.setScalar(0.001); maskG.visible = false; group.add(maskG);
+
+    // World: hill, shadow, flowers
+    var hill = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 20), toon(0x9bdc86));
+    hill.scale.set(5.8, 1.1, 3.2); hill.position.set(0, -2.35, 0); scene.add(hill);
+    var shadow = new THREE.Mesh(new THREE.CircleGeometry(0.8, 28), basic(0x2b1d3f, { transparent: true, opacity: 0.2, depthWrite: false }));
+    shadow.rotation.x = -Math.PI / 2; shadow.position.set(0, -1.235, 0.1); scene.add(shadow);
+    var FL = [0xffffff, 0xffe27a, 0xffb3c9];
+    [[-2.3, 0.9], [-1.7, 1.4], [-1.2, 0.5], [1.3, 0.6], [1.8, 1.3], [2.4, 0.8], [-2.9, 0.4], [2.9, 0.3], [0.5, 1.6]].forEach(function (p, i) {
+      var y = -2.35 + 1.1 * Math.sqrt(Math.max(0, 1 - Math.pow(p[0] / 5.8, 2) - Math.pow(p[1] / 3.2, 2)));
+      var f = new THREE.Mesh(new THREE.SphereGeometry(0.055, 8, 8), basic(FL[i % 3])); f.position.set(p[0], y + 0.03, p[1]); scene.add(f);
+    });
+
+    // Fireflies and pollen
+    var flies = [];
+    [0, 1].forEach(function () {
+      var o = new THREE.Mesh(new THREE.SphereGeometry(0.055, 10, 10), basic(0xfff3a8, { transparent: true, opacity: 0.95 }));
+      scene.add(o); flies.push(o);
+    });
+    function dot() {
+      var c = document.createElement("canvas"); c.width = c.height = 32;
+      var g = c.getContext("2d"), gr = g.createRadialGradient(16, 16, 0, 16, 16, 16);
+      gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(1, "rgba(255,255,255,0)");
+      g.fillStyle = gr; g.fillRect(0, 0, 32, 32);
+      return new THREE.CanvasTexture(c);
+    }
+    var N = 90, pos = new Float32Array(N * 3);
+    for (var i = 0; i < N; i++) {
+      var a = Math.random() * Math.PI * 2, rad = 1.5 + Math.random() * 1.6;
+      pos[i * 3] = Math.cos(a) * rad; pos[i * 3 + 1] = -1.2 + Math.random() * 3.6; pos[i * 3 + 2] = Math.sin(a) * rad * 0.5 - 0.3;
+    }
+    var pGeo = new THREE.BufferGeometry(); pGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    var points = new THREE.Points(pGeo, new THREE.PointsMaterial({ size: 0.16, map: dot(), color: 0xfff1b0, transparent: true, opacity: 0.85, depthWrite: false, sizeAttenuation: true }));
+    scene.add(points);
+
+    // State
+    var cur = { mouth: 0.6, open: 0, bounce: 0.7, speed: 1.1, scale: 1, eye: 1, worry: 0, mask: 0, blush: 0.4, happy: 0, arm: 0 };
+    var tgt = { mouth: 0.6, open: 0, bounce: 0.7, speed: 1.1, scale: 1, eye: 1, worry: 0, mask: 0 };
+    var tgtColor = col.clone();
+    var pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+    var vy = 0, hopY = 0, squash = 0, patTimer = 0, waveTimer = 0, spin = 0, spinAcc = 0, idleAt = 6, blinkAt = 2, blinkT = -1, taps = [];
+    var clock = new THREE.Clock(), phase = 0, TWO_PI = Math.PI * 2;
+    var raycaster = new THREE.Raycaster(), ndc = new THREE.Vector2();
+
+    function resize() {
+      var w = stageEl.clientWidth, h = stageEl.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false);
+      var aspect = w / h;
+      camera.aspect = aspect;
+      camera.position.set(0, 0.35, 7.4 + Math.max(0, 0.95 - aspect) * 5);
+      camera.lookAt(0, 0.75, 0);
+      camera.updateProjectionMatrix();
+    }
+    if (window.ResizeObserver) new ResizeObserver(resize).observe(stageEl);
+    window.addEventListener("resize", resize);
+    resize();
+
+    function setMood(name) {
+      var m = MOODS[name];
+      tgt.mouth = m.mouth; tgt.open = m.open; tgt.bounce = m.bounce; tgt.speed = m.speed; tgt.scale = m.scale;
+      tgt.eye = m.eye; tgt.worry = m.worry; tgt.mask = m.mask; tgtColor.setHex(m.color);
+    }
+    function hop(p) { if (!reduce) vy = p || 2.2; }
+    function doSpin() { if (!reduce) spin = TWO_PI; }
+
+    function pat(px, py) {
+      patTimer = 1.5; hop(2.6);
+      var now = Date.now(); taps.push(now);
+      taps = taps.filter(function (t) { return now - t < 4000; });
+      var s = petSpot();
+      fx("\u2665", px == null ? s.x : px, py == null ? s.y : py, 3);
+      if (taps.length >= 5) { taps = []; doSpin(); setHint("Okay okay, I'm dizzy!"); }
+      else setHint(pick(TAPS));
+    }
+    function setPointer(e) {
+      var rect = stageEl.getBoundingClientRect();
+      pointer.tx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.ty = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+    }
+    stageEl.addEventListener("pointermove", setPointer);
+    stageEl.addEventListener("pointerleave", function () { pointer.tx = 0; pointer.ty = 0; });
+    stageEl.addEventListener("pointerdown", function (e) {
+      if (e.target.closest && e.target.closest(".bubble")) return;
+      setPointer(e);
+      var rect = stageEl.getBoundingClientRect();
+      ndc.set(((e.clientX - rect.left) / rect.width) * 2 - 1, -(((e.clientY - rect.top) / rect.height) * 2 - 1));
+      raycaster.setFromCamera(ndc, camera);
+      if (raycaster.intersectObject(body, true).length) pat(e.clientX - rect.left, e.clientY - rect.top - 10);
+    });
+    stageEl.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pat(); }
+    });
+
+    function idle() {
+      var m = state.mood, roll = Math.random(), s = petSpot();
+      if ((m === "meh" || m === "poor" || m === "bad") && roll < 0.5) {
+        hop(1.7); setHint("Achoo. Sorry."); fx("\uD83D\uDCA8", s.x, s.y, 2);
+      } else if ((m === "good" || m === "ok") && roll < 0.35) {
+        doSpin(); hop(1.9); setHint("Happy dance!"); fx("\u2728", s.x, s.y, 3);
+      } else if (roll < 0.7) {
+        waveTimer = 1.8; setHint("Hi!");
+      } else { setHint(pick(QUIPS[m])); }
+    }
+
+    var lerp = function (a, b, t) { return a + (b - a) * t; };
+    var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+
+    function frame() {
+      var dt = Math.min(clock.getDelta(), 0.05);
+      var k = 1 - Math.exp(-dt * 3.2), k2 = 1 - Math.exp(-dt * 6);
+      var happyNow = (patTimer > 0 || waveTimer > 0) ? 1 : 0;
+      cur.mouth = lerp(cur.mouth, patTimer > 0 ? 1 : tgt.mouth, k);
+      cur.open = lerp(cur.open, patTimer > 0 ? 1 : tgt.open, k2);
+      cur.bounce = lerp(cur.bounce, tgt.bounce, k); cur.speed = lerp(cur.speed, tgt.speed, k);
+      cur.scale = lerp(cur.scale, tgt.scale, k); cur.eye = lerp(cur.eye, tgt.eye, k);
+      cur.worry = lerp(cur.worry, tgt.worry, k); cur.mask = lerp(cur.mask, tgt.mask, k2);
+      cur.blush = lerp(cur.blush, patTimer > 0 ? 0.9 : (tgt.open ? 0.6 : 0.4), k2);
+      cur.happy = lerp(cur.happy, patTimer > 0 ? 1 : 0, k2 * 1.5);
+      cur.arm = lerp(cur.arm, happyNow, k2);
+      col.lerp(tgtColor, k);
+      tint.copy(white).lerp(col, 0.5); bodyMat.color.copy(tint);
+      if (patTimer > 0) patTimer -= dt;
+      if (waveTimer > 0) waveTimer -= dt;
+      pointer.x = lerp(pointer.x, pointer.tx, 1 - Math.exp(-dt * 5));
+      pointer.y = lerp(pointer.y, pointer.ty, 1 - Math.exp(-dt * 5));
+
+      var motion = reduce ? 0.15 : 1;
+      phase += dt * cur.speed * motion;
+      var t = clock.elapsedTime;
+
+      // Hop with squash and stretch
+      var wasAir = hopY > 0;
+      hopY += vy * dt; vy -= 9.5 * dt;
+      if (hopY < 0) { if (wasAir && vy < -1.2) squash = 0.24; hopY = 0; vy = 0; }
+      squash = lerp(squash, 0, 1 - Math.exp(-dt * 9));
+      var stretch = clamp(vy * 0.045, -0.16, 0.2);
+      var sy = cur.scale * (1 + stretch - squash + 0.022 * Math.sin(phase * 2.2) * motion);
+      var sx = cur.scale * (1 - stretch * 0.5 + squash * 0.6 - 0.011 * Math.sin(phase * 2.2) * motion);
+      group.scale.set(sx, sy, sx);
+
+      if (spin > 0) { var step = Math.min(spin, dt * 9); spin -= step; spinAcc += step; if (spin <= 0) spinAcc = 0; }
+      idleAt -= dt;
+      if (idleAt <= 0) { idle(); idleAt = 6 + Math.random() * 4; }
+
+      group.position.y = Math.sin(phase * 1.6) * 0.085 * (0.5 + cur.bounce * 0.5) * motion + hopY;
+      group.rotation.y = pointer.x * 0.35 + spinAcc;
+      group.rotation.x = -pointer.y * 0.1;
+      group.rotation.z = Math.sin(phase * 0.9) * 0.035 * motion;
+      shadow.scale.setScalar(clamp(1 - hopY * 0.22, 0.6, 1.1) * (0.9 + cur.scale * 0.1));
+      shadow.material.opacity = 0.2 * clamp(1 - hopY * 0.2, 0.5, 1);
+
+      // Sprout sway
+      sprout.rotation.z = Math.sin(t * 2.1) * 0.14 * motion + pointer.x * -0.08;
+      sprout.rotation.x = Math.sin(t * 1.7 + 1) * 0.06 * motion;
+
+      // Arms: down at rest, wave when happy, droop when sad
+      arms.forEach(function (a) {
+        var rest = 0.5 + (cur.worry > 0.3 ? -0.2 : 0);
+        var up = 1.95 + Math.sin(t * 11 + (a.side > 0 ? 0 : 1.5)) * 0.35;
+        var ang = lerp(rest + Math.sin(phase * 1.6 + a.side) * 0.05 * motion, up, cur.arm);
+        a.pivot.rotation.z = a.side * ang;
+      });
+
+      // Eyes
+      blinkAt -= dt;
+      if (blinkAt <= 0 && blinkT < 0) blinkT = 0;
+      var lid = 1;
+      if (blinkT >= 0) {
+        blinkT += dt; lid = Math.abs(1 - blinkT / 0.07);
+        if (blinkT >= 0.14) { blinkT = -1; blinkAt = 2 + Math.random() * 3; lid = 1; }
+        lid = clamp(lid, 0.08, 1);
+      }
+      var happyShow = cur.happy > 0.5;
+      eyeGs.forEach(function (eg, i) {
+        eg.visible = !happyShow;
+        eg.scale.set(1, cur.eye * lid, 1);
+        lookGs[i].position.x = pointer.x * 0.035; lookGs[i].position.y = pointer.y * 0.035;
+        happyEyes[i].visible = happyShow;
+      });
+      brows.forEach(function (b) {
+        b.mesh.rotation.z = -b.side * cur.worry;
+        b.mesh.position.y = 0.31 + (1 - cur.eye) * -0.08 + (happyShow ? 0.05 : 0);
+      });
+
+      // Mouth
+      var c = cur.mouth, mag = Math.max(0.08, Math.abs(c));
+      mouthLine.scale.set(1, (c >= 0 ? -1 : 1) * mag, 1);
+      mouthLine.position.y = -0.14 + (c < 0 ? 0.03 * c : 0.01 * c);
+      mouthLine.visible = cur.open < 0.5 && cur.mask < 0.5;
+      mouthOpen.visible = cur.open >= 0.5 && cur.mask < 0.5;
+      mouthOpen.scale.setScalar(Math.max(0.2, cur.open));
+      blushes.forEach(function (b) { b.material.opacity = cur.blush; });
+
+      maskG.visible = cur.mask > 0.03; maskG.scale.setScalar(Math.max(0.001, cur.mask));
+
+      flies.forEach(function (o, i) {
+        var a = t * (0.6 + i * 0.3) * motion + i * Math.PI, rad = 1.5 + i * 0.15;
+        o.position.set(Math.cos(a) * rad, 0.3 + Math.sin(a * 1.4 + i) * (0.6 + i * 0.15), Math.sin(a) * rad * 0.5);
+        o.scale.setScalar(0.8 + 0.3 * Math.sin(t * 4 + i * 2));
+      });
+      var arr = pGeo.attributes.position.array, rise = dt * 0.16 * cur.speed * motion;
+      for (var p = 0; p < N; p++) { arr[p * 3 + 1] += rise; if (arr[p * 3 + 1] > 2.4) arr[p * 3 + 1] = -1.2; }
+      pGeo.attributes.position.needsUpdate = true;
+
+      camera.position.x = pointer.x * 0.25;
+      camera.lookAt(0, 0.75, 0);
+      renderer.render(scene, camera);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+    return { setMood: setMood, hop: hop };
+  }
+
+
+  /* ---------- Live data: read the same JSON files the VAYU site reads ---------- */
+  var dstatEl = $("dstat");
+  function istStamp(iso) {
+    var d = new Date(iso);
+    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "Asia/Kolkata" }) + ", " +
+      d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" }) + " IST";
+  }
+  function setStatus() {
+    var age = (Date.now() - new Date(DATA_INFO.generated).getTime()) / 3600000;
+    if (!DATA_INFO.live) dstatEl.textContent = "Saved numbers from the " + istStamp(DATA_INFO.generated).split(",")[0] + " run. Live: open the VAYU site.";
+    else if (age > 36) dstatEl.textContent = "Older numbers. Last VAYU run: " + istStamp(DATA_INFO.generated);
+    else dstatEl.textContent = "Live from VAYU. Updated " + istStamp(DATA_INFO.generated);
+  }
+  function load() {
+    if (!window.fetch) { setStatus(); return; }
+    var RAW = "https://raw.githubusercontent.com/shamathakur77/vayu/main/";
+    function get(path, absolute) {
+      return fetch(absolute ? RAW + path : path, { cache: "no-store" }).then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      });
+    }
+    function both(absolute) { return Promise.all([get("data/latest.json", absolute), get("data/scoreboard.json", absolute)]); }
+    both(false).catch(function () { return both(true); }).then(function (pair) {
+      var d = normalise(pair[0], pair[1]);
+      var any = ORDER.some(function (k) { return d[k].tomorrow || d[k].stats; });
+      if (!any) throw new Error("empty data");
+      DATA = d;
+      DATA_INFO = { live: true, generated: pair[0].generated_at || new Date().toISOString() };
+      setStatus();
+      refresh(false);
+    }).catch(function () { DATA = SNAPSHOT; setStatus(); });
+  }
+
+  try {
+    if (!window.THREE) throw new Error("three.js not loaded");
+    pet = buildPet();
+  } catch (err) {
+    var fb = document.createElement("div");
+    fb.className = "fallback";
+    stageEl.appendChild(fb);
+    if (window.console) console.error("3D pet unavailable:", err);
+  }
+  setStatus();
+  refresh(true);
+  load();
+})();
+</script>
+</body>
+</html>
