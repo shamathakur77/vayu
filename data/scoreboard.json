@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T00:22:06Z",
+  "generated_at": "2026-09-29T01:40:47Z",
   "season_window_days": 90,
   "definition": "Season accuracy = 100 - MAPE of graded 48h (lead 2) predictions with target dates in the trailing 90 days. Band target: 80 percent coverage. Full definition in the README.",
   "cities": {
@@ -15,12 +15,12 @@
           "band_coverage": 71.4
         },
         "lead1": {
-          "n": 28,
-          "mae": 12.9,
-          "mape": 23.2,
-          "accuracy": 76.8,
-          "baseline_mae": 14.4,
-          "band_coverage": 82.1
+          "n": 29,
+          "mae": 13.1,
+          "mape": 24.4,
+          "accuracy": 75.6,
+          "baseline_mae": 14.1,
+          "band_coverage": 82.8
         }
       },
       "all_time": {
@@ -33,12 +33,12 @@
           "band_coverage": 71.4
         },
         "lead1": {
-          "n": 28,
-          "mae": 12.9,
-          "mape": 23.2,
-          "accuracy": 76.8,
-          "baseline_mae": 14.4,
-          "band_coverage": 82.1
+          "n": 29,
+          "mae": 13.1,
+          "mape": 24.4,
+          "accuracy": 75.6,
+          "baseline_mae": 14.1,
+          "band_coverage": 82.8
         }
       }
     },
@@ -65,12 +65,12 @@
           "band_coverage": 75.0
         },
         "lead1": {
-          "n": 28,
+          "n": 29,
           "mae": 2.8,
-          "mape": 34.0,
-          "accuracy": 66.0,
-          "baseline_mae": 2.5,
-          "band_coverage": 78.6
+          "mape": 33.2,
+          "accuracy": 66.8,
+          "baseline_mae": 2.8,
+          "band_coverage": 79.3
         }
       },
       "all_time": {
@@ -83,12 +83,12 @@
           "band_coverage": 75.0
         },
         "lead1": {
-          "n": 28,
+          "n": 29,
           "mae": 2.8,
-          "mape": 34.0,
-          "accuracy": 66.0,
-          "baseline_mae": 2.5,
-          "band_coverage": 78.6
+          "mape": 33.2,
+          "accuracy": 66.8,
+          "baseline_mae": 2.8,
+          "band_coverage": 79.3
         }
       }
     },
@@ -115,12 +115,12 @@
           "band_coverage": 42.9
         },
         "lead1": {
-          "n": 28,
-          "mae": 3.0,
-          "mape": 34.9,
-          "accuracy": 65.1,
+          "n": 29,
+          "mae": 3.2,
+          "mape": 35.8,
+          "accuracy": 64.2,
           "baseline_mae": 2.9,
-          "band_coverage": 42.9
+          "band_coverage": 41.4
         }
       },
       "all_time": {
@@ -133,12 +133,12 @@
           "band_coverage": 42.9
         },
         "lead1": {
-          "n": 28,
-          "mae": 3.0,
-          "mape": 34.9,
-          "accuracy": 65.1,
+          "n": 29,
+          "mae": 3.2,
+          "mape": 35.8,
+          "accuracy": 64.2,
           "baseline_mae": 2.9,
-          "band_coverage": 42.9
+          "band_coverage": 41.4
         }
       }
     }
